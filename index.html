@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f3eb">
+  <meta name="theme-color" content="#233C52">
   <title>bsaric22 — Ideje u pokretu.</title>
   <meta name="description" content="Osobni kutak bsaric22. Malo koda, malo dizajna i puno znatiželje. Istraži interaktivne eksperimente i ideje u pokretu.">
   <meta property="og:title" content="bsaric22 — Ideje u pokretu.">
@@ -12,25 +12,35 @@
   <meta property="og:url" content="https://bsaric22.github.io/">
   <link rel="canonical" href="https://bsaric22.github.io/">
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/styles.css">
   <script src="./assets/main.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Preskoči na sadržaj</a>
-  <header class="header wrap">
-    <a class="brand" href="#" aria-label="bsaric22, početna">b<span class="brand-dot">.</span><span class="brand-name">bsaric22</span></a>
-    <nav aria-label="Glavna navigacija"><a href="#o-meni">O meni</a><a href="#eksperimenti">Eksperimenti</a><a class="nav-contact" href="#kontakt">Reci bok <span aria-hidden="true">↗</span></a></nav>
-    <button class="motion-toggle" type="button" aria-pressed="false" aria-label="Pauziraj animacije" title="Pauziraj animacije" hidden><span aria-hidden="true">Ⅱ</span></button>
+  <header class="header">
+    <a class="nav-brand" href="#" aria-label="bsaric22, početna"><span class="brand-mark" aria-hidden="true"></span>bsaric22</a>
+    <nav id="site-navigation" aria-label="Glavna navigacija">
+      <a href="#o-meni">O meni</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="motion-toggle" type="button" aria-pressed="false" aria-label="Pauziraj animacije" title="Pauziraj animacije" hidden><span aria-hidden="true">Ⅱ</span></button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Otvori izbornik" hidden><span></span><span></span><span></span></button>
+    </div>
   </header>
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">
-      <div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span> OSOBNI KUTAK NA INTERNETU</p><h1 id="hero-title">Znatiželja.<br>Ideje.<br><span class="serif">U pokretu.</span><span class="title-star" aria-hidden="true">✳</span></h1><p class="hero-description">Bok, ja sam <strong>bsaric22</strong>.<br>Malo koda, malo dizajna i puno pitanja<br class="desktop-break"> koja počinju s „a što ako…”.</p><a class="button button-dark" href="#eksperimenti">Zaviri u moj svijet <span aria-hidden="true">↘</span></a></div>
-      <div class="hero-art" aria-label="Animirana narančasta orbitalna skulptura"><div class="art-corner top-left">FIG. 01 — ZNATIŽELJA</div><div class="art-cross" aria-hidden="true">+</div><canvas id="hero-canvas" aria-hidden="true"></canvas><div class="orbit-fallback" aria-hidden="true"></div><span class="art-caption">NIŠTA ZANIMLJIVO NE STOJI NA MJESTU.</span><span class="art-coordinate" aria-hidden="true">X 022<br>Y 001</span></div>
+      <div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span> OSOBNI KUTAK NA INTERNETU</p><h1 id="hero-title">Znatiželja.<br>Ideje.<br><span class="serif">U pokretu.</span><span class="title-star" aria-hidden="true">✳</span></h1><p class="hero-description">Bok, ja sam <strong>bsaric22</strong>.<br>Malo koda, malo dizajna i puno pitanja<br class="desktop-break"> koja počinju s „a što ako…”.</p><a class="button button-dark" href="#portfolio">Zaviri u moj svijet <span aria-hidden="true">↘</span></a></div>
+      <div class="hero-art" aria-label="Animirana plava orbitalna skulptura"><div class="art-corner top-left">FIG. 01 — ZNATIŽELJA</div><div class="art-cross" aria-hidden="true">+</div><canvas id="hero-canvas" aria-hidden="true"></canvas><div class="orbit-fallback" aria-hidden="true"></div><span class="art-caption">NIŠTA ZANIMLJIVO NE STOJI NA MJESTU.</span><span class="art-coordinate" aria-hidden="true">X 022<br>Y 001</span></div>
       <div class="hero-bottom"><span>NEPRESTANO U NASTAJANJU</span><a href="#o-meni">Nastavi istraživati <span aria-hidden="true">↓</span></a><span>V.01 / 2026</span></div>
     </section>
     <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>ZNATIŽELJA <i>✳</i> KOD <i>✳</i> DIZAJN <i>✳</i> EKSPERIMENTI <i>✳</i> DOBRE IDEJE <i>✳</i> </span><span>ZNATIŽELJA <i>✳</i> KOD <i>✳</i> DIZAJN <i>✳</i> EKSPERIMENTI <i>✳</i> DOBRE IDEJE <i>✳</i> </span></div></div>
     <section class="about wrap section" id="o-meni" aria-labelledby="about-title"><div class="section-label"><span class="section-number">01 /</span> O MENI</div><div class="about-content"><h2 id="about-title">Iza svakog klika,<br>jedna <span class="serif">znatiželjna glava.</span></h2><div class="about-columns"><p>Ovo je moj mali prostor za velike i male ideje. Mjesto gdje se susreću tehnologija, kreativnost i želja da nešto napravim na svoj način.</p><p>Stranica je tek na početku. Zasad je tu nekoliko eksperimenata, malo igre i otvoren prostor za sve što dolazi. Slobodno istraži — zato je i tu.</p></div><div class="interests"><span>⌘ &nbsp; Kod & logika</span><span>◉ &nbsp; Vizualno & intuitivno</span><span>✳ &nbsp; Učenje kroz igru</span></div></div></section>
-    <section class="experiments wrap section" id="eksperimenti" aria-labelledby="experiments-title"><div class="section-heading"><div><p class="section-label"><span class="section-number">02 /</span> MALI DIGITALNI LABORATORIJ</p><h2 id="experiments-title">A što ako <span class="serif">probamo?</span></h2></div><p>Tri ideje. Bez pravila.<br>Odaberi oblik i poigraj se.</p></div><div class="experiment-grid">
+    <section class="experiments wrap section" id="portfolio" aria-labelledby="experiments-title"><div class="section-heading"><div><p class="section-label"><span class="section-number">02 /</span> PORTFOLIO — DIGITALNI EKSPERIMENTI</p><h2 id="experiments-title">A što ako <span class="serif">probamo?</span></h2></div><p>Tri ideje. Bez pravila.<br>Odaberi oblik i poigraj se.</p></div><div class="experiment-grid">
       <a class="experiment" href="#igraliste" data-preset="orbit"><div class="experiment-art art-orbit"><div class="mini-orbit" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="experiment-index">001</span><span class="experiment-arrow" aria-hidden="true">↗</span></div><div class="experiment-info"><h3>Privlačna sila</h3><span>GEOMETRIJA / POKRET</span></div><p>Jedan oblik. Bezbroj perspektiva.</p></a>
       <a class="experiment" href="#igraliste" data-preset="wave"><div class="experiment-art art-wave"><div class="wave-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="experiment-index">002</span><span class="experiment-arrow" aria-hidden="true">↗</span></div><div class="experiment-info"><h3>U svom ritmu</h3><span>VALOVI / HARMONIJA</span></div><p>Malo reda u nepredvidivom.</p></a>
       <a class="experiment" href="#igraliste" data-preset="grid"><div class="experiment-art art-grid"><div class="dot-grid" aria-hidden="true"></div><span class="experiment-index">003</span><span class="experiment-arrow" aria-hidden="true">↗</span></div><div class="experiment-info"><h3>Sve je povezano</h3><span>TOČKE / INTERAKCIJA</span></div><p>Pomakni miš. Promijeni perspektivu.</p></a>

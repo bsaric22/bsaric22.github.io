@@ -1,6 +1,8 @@
 # bsaric22 — osobna stranica
 
-Statična, responzivna osobna stranica na hrvatskom. HTML, CSS i JavaScript, bez vanjskih biblioteka, fontova ili build ovisnosti.
+Statična, responzivna osobna stranica na hrvatskom. HTML, CSS i JavaScript, bez vanjskih biblioteka ili build ovisnosti. Navigacija koristi Outfit Medium (500) putem Google Fonts, uz lokalni zamjenski font ako preuzimanje nije dostupno.
+
+Pozadina kombinira `#233C52` i `#004F8F`, a footer koristi `#020C38`. Fiksirana navigacija ima zaobljenje od 20 px, mobilni izbornik i automatsko označavanje aktivne sekcije plavom bojom `#23A9F2`. Sekcije su `#o-meni`, `#portfolio` i `#kontakt`; uvodni ekran nema aktivnu stavku, a interaktivno igralište pripada Portfoliju.
 
 ## Lokalni pregled
 

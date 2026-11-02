@@ -1,5 +1,72 @@
 (() => {
   'use strict';
+  const header = document.querySelector('.header');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navigationLinks = [...header.querySelectorAll('nav a')];
+  const navigationSections = navigationLinks.map(link => document.querySelector(link.hash));
+  const mobileNavigation = window.matchMedia('(max-width: 760px)');
+
+  function closeMenu(returnFocus = false) {
+    header.classList.remove('nav-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Otvori izbornik');
+    if (returnFocus) menuToggle.focus();
+  }
+
+  header.classList.add('nav-enhanced');
+  menuToggle.hidden = false;
+  menuToggle.addEventListener('click', () => {
+    const open = menuToggle.getAttribute('aria-expanded') !== 'true';
+    header.classList.toggle('nav-open', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.setAttribute('aria-label', open ? 'Zatvori izbornik' : 'Otvori izbornik');
+  });
+  header.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    // Avoid leaving keyboard focus inside the collapsed mobile panel.
+    closeMenu(mobileNavigation.matches && link.closest('nav') !== null);
+  }));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && header.classList.contains('nav-open')) closeMenu(true);
+  });
+  document.addEventListener('click', event => {
+    if (!header.contains(event.target)) closeMenu();
+  });
+  document.addEventListener('focusin', event => {
+    if (!header.contains(event.target)) closeMenu();
+  });
+  mobileNavigation.addEventListener('change', () => closeMenu());
+
+  // Track the section crossing the area below the floating bar. The playground
+  // belongs to Portfolio; the introductory hero has no selected navigation item.
+  function updateActiveSection() {
+    const threshold = mobileNavigation.matches ? 120 : 136;
+    let active = -1;
+    navigationSections.forEach((section, index) => {
+      if (section.getBoundingClientRect().top <= threshold) active = index;
+    });
+    if (window.scrollY > 0 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      active = navigationLinks.length - 1;
+    }
+    navigationLinks.forEach((link, index) => {
+      if (index === active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+  let navigationFrame = 0;
+  function scheduleNavigationUpdate() {
+    if (navigationFrame) return;
+    navigationFrame = requestAnimationFrame(() => {
+      navigationFrame = 0;
+      updateActiveSection();
+    });
+  }
+  window.addEventListener('scroll', scheduleNavigationUpdate, { passive: true });
+  window.addEventListener('resize', scheduleNavigationUpdate);
+  window.addEventListener('pageshow', scheduleNavigationUpdate);
+  window.addEventListener('hashchange', scheduleNavigationUpdate);
+  document.fonts.ready.then(scheduleNavigationUpdate);
+  updateActiveSection();
+
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let paused = reducedMotion.matches;
   let mode = 'orbit';
@@ -38,7 +105,7 @@
         const point = project(radius * Math.cos(u), radius * Math.sin(u), (0.35 + ripple) * Math.sin(v), t, item);
         if (step === 0) ctx.moveTo(point[0], point[1]); else ctx.lineTo(point[0], point[1]);
       }
-      ctx.strokeStyle = hero ? 'rgba(208, 67, 29, 0.68)' : 'rgba(217, 230, 176, 0.65)';
+      ctx.strokeStyle = hero ? 'rgba(35, 169, 242, 0.85)' : 'rgba(137, 210, 255, 0.65)';
       ctx.lineWidth = hero ? 0.85 : 0.8;
       ctx.stroke();
     }
@@ -54,7 +121,7 @@
         const y = height * 0.22 + row * height * 0.021 + wave * Math.sin(step / 110 * Math.PI);
         if (step === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
       }
-      ctx.strokeStyle = `rgba(217, 230, 176, ${0.25 + row / 40})`;
+      ctx.strokeStyle = `rgba(137, 210, 255, ${0.25 + row / 40})`;
       ctx.lineWidth = 1;
       ctx.stroke();
     }
@@ -69,7 +136,7 @@
         const point = project(x * 0.13, y * 0.13, z, 1.2, item);
         ctx.beginPath();
         ctx.arc(point[0], point[1], 1.5 + (z + 0.4) * 2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(217,230,176,${0.5 + z * 0.7})`;
+        ctx.fillStyle = `rgba(137,210,255,${0.5 + z * 0.7})`;
         ctx.fill();
       }
     }
