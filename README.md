@@ -1,6 +1,6 @@
 # Boris Šarić — osobna stranica
 
-Statična, responzivna osobna stranica na hrvatskom. HTML, CSS i JavaScript, bez vanjskih biblioteka ili build ovisnosti. Navigacija koristi Outfit Medium (500), uvod Fira Code putem Google Fonts, a naslov Clash Display putem Fontsharea. Svi imaju zamjenske fontove ako preuzimanje nije dostupno.
+Statična, responzivna osobna stranica na hrvatskom. HTML, CSS i JavaScript, bez vanjskih biblioteka ili build ovisnosti. Navigacija koristi Outfit Medium (500), uvod Fira Code, a glavni naslov Yeseva One putem Google Fonts. Naslov „O meni” koristi Clash Display putem Fontsharea. Svi imaju zamjenske fontove ako preuzimanje nije dostupno.
 
 Pozadinom prevladava `#233C52` uz diskretne naglaske `#004F8F`, a footer koristi `#020C38`. Fiksirana navigacija ima zaobljenje od 20 px, mobilni izbornik i automatsko označavanje aktivne sekcije plavom bojom `#23A9F2`. Sekcije su `#o-meni`, `#portfolio` i `#kontakt`; uvodni ekran nema aktivnu stavku, a interaktivno igralište pripada Portfoliju.
 
@@ -27,6 +27,8 @@ Workflow priprema mapu samo s javnim datotekama. `.nojekyll` isključuje Jekyll.
 - `assets/main.js`: statični geometrijski prikazi, intenzitet oblika i navigacija.
 - `assets/favicon.svg`: ikona stranice.
 
-Naslovna sekcija `#naslovna` prikazuje veliko ime BORIS ŠARIĆ u sredini i uvodni tekst ispod njega. Pozadina ciklički izmjenjuje četiri scene s po dva SVG motiva: grafički i UI/UX dizajn → poslovni procesi → fotografija → video produkcija. Svaka scena traje oko osam sekundi, uz sekundni prijelaz; puni krug traje 32 sekunde. Stilovi naslovne sekcije su u `assets/hero.css`.
+Naslovna sekcija `#naslovna` prikazuje ime iznad prezimena, s prezimenom pomaknutim udesno. Naslov koristi Yeseva One, uz Georgiju kao zamjenu. Pozadinski SVG motivi kreću se neovisnim nasumičnim putanjama. Stilovi su u `assets/hero.css`.
 
-Naslovna sekcija prvo animira ime, zatim ispisuje uvod. Pozadinski motivi automatski se animiraju uz opacity 25–32%; mogu se pauzirati gumbom ispod uvoda i miruju izvan vidljivog dijela stranice. Uz `prefers-reduced-motion: reduce` sve je odmah vidljivo. Geometrijski prikazi ostaju statični i ponovno se crtaju samo pri promjeni veličine ili ručnom odabiru oblika i intenziteta. Navigacija nema kontrolu animacija. Osnovni sadržaj i navigacija rade i bez JavaScripta.
+Naslovna sekcija na desktopu i mobitelu prvo animira ime i prezime iz zajedničke linije, zatim postupno ispisuje uvod. Pokretanje je izričito omogućeno na oba tipa uređaja. Pozadina se može pauzirati gumbom ispod uvoda i miruje izvan vidljivog dijela stranice.
+
+Sekcija O meni koristi tamnu podlogu #1E1E1E, točkastu teksturu i geometrijske nacrte. Lijevo je `.about-portrait`, a desno naslov i `.about-biography` u Fira Codeu. Zamijeni privremeni tekst osobnim opisom, a `.about-photo-placeholder` vlastitom slikom; primjer HTML-a je u komentaru.

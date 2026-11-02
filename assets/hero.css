@@ -25,9 +25,9 @@
   flex-direction:column;
   align-items:center;
   gap:0;
-  font-family:'Clash Display', var(--sans);
+  font-family:'Yeseva One', Georgia, serif;
   font-size:clamp(108px, 13.5vw, 184px);
-  font-weight:600;
+  font-weight:400;
   line-height:1.04;
   letter-spacing:-.045em;
   margin:0 0 40px;
@@ -36,6 +36,9 @@
 
 .name-window { display:block; overflow:hidden; padding:.055em .1em; margin:-.04em 0; }
 .name-line { display:block; }
+/* Offset the surname from the first line without affecting its reveal animation. */
+.name-window:first-child { transform:translateX(-.45em); }
+.name-window:last-child { transform:translateX(.5em); }
 
 .intro-description {
   display:grid;
@@ -153,7 +156,7 @@
 }
 
 @media(max-width:420px) {
-  #hero-title { font-size:clamp(82px, 22vw, 94px); }
+  #hero-title { font-size:clamp(64px, 20vw, 84px); }
 }
 
 
@@ -161,7 +164,7 @@
 .about-surface {
   position:relative;
   isolation:isolate;
-  background:linear-gradient(to bottom, transparent, #2B445E 110px, #2B445E calc(100% - 110px), transparent);
+  background:linear-gradient(to bottom, transparent, #1E1E1E 110px, #1E1E1E calc(100% - 110px), transparent);
   padding-block:60px;
 }
 .about-surface::before {
@@ -170,11 +173,98 @@
   z-index:-1;
   inset:0;
   pointer-events:none;
-  background-image:radial-gradient(circle, rgba(173, 209, 236, .3) 1px, transparent 1.2px);
+  background-image:radial-gradient(circle, rgba(173, 185, 196, .22) 1px, transparent 1.2px);
   background-size:18px 18px;
   mask-image:linear-gradient(to bottom, transparent, #000 130px, #000 calc(100% - 130px), transparent);
 }
 .about-surface .about { border-bottom:0; }
 @media(max-width:760px) {
   .about-surface { padding-block:40px; }
+}
+
+/* About: portrait and biography on a dark drafting-paper surface. */
+.about-surface { overflow:hidden; }
+.about-surface .about {
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items:center;
+  gap:clamp(48px, 8vw, 120px);
+  padding-block:90px;
+}
+.about-drafting {
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  overflow:hidden;
+  mask-image:linear-gradient(to bottom, transparent, #000 130px, #000 calc(100% - 130px), transparent);
+}
+.about-drafting svg {
+  position:absolute;
+  width:clamp(300px, 38vw, 530px);
+  stroke:#8fa3b4;
+  stroke-width:1;
+  opacity:.15;
+}
+.draft-plan { top:10%; left:-7%; transform:rotate(-12deg); }
+.draft-geometry { bottom:2%; right:-7%; transform:rotate(9deg); }
+.about-portrait {
+  position:relative;
+  width:100%;
+  max-width:450px;
+  aspect-ratio:4 / 5;
+  justify-self:center;
+  border:1px solid rgba(186, 202, 214, .24);
+  border-radius:6px;
+  background:rgba(21, 24, 27, .65);
+}
+.about-photo-placeholder {
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  color:#9da8b0;
+  font-family:'Fira Code', monospace;
+  font-size:12px;
+}
+.about-photo-placeholder svg { width:72px; height:72px; stroke:currentColor; stroke-width:1; }
+.about-portrait > img { display:block; width:100%; height:100%; object-fit:cover; border-radius:inherit; }
+.portrait-registration { position:absolute; color:#9da8b0; font:22px 'Fira Code', monospace; }
+.portrait-registration.top-left { top:-15px; left:-8px; }
+.portrait-registration.bottom-right { bottom:-15px; right:-8px; }
+#about-title {
+  font-family:'Clash Display', var(--sans);
+  font-size:clamp(54px, 6.5vw, 88px);
+  font-weight:500;
+  letter-spacing:-.035em;
+  margin:0 0 32px;
+}
+.about-biography {
+  font-family:'Fira Code', monospace;
+  font-size:clamp(15px, 1.4vw, 18px);
+  line-height:1.95;
+  color:#c7cdd2;
+  margin:0;
+  max-width:600px;
+}
+.about-signature {
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-top:40px;
+  font:11px 'Fira Code', monospace;
+  letter-spacing:2px;
+  color:#97a6b2;
+}
+.about-signature span { width:40px; height:1px; background:var(--accent); }
+@media(max-width:760px) {
+  .about-surface .about { grid-template-columns:minmax(0, 1fr); gap:44px; padding-block:75px; }
+  .about-portrait { width:min(100%, 360px); }
+  #about-title { font-size:58px; margin-bottom:24px; }
+  .about-biography { font-size:15px; }
+  .about-drafting svg { opacity:.12; }
 }
