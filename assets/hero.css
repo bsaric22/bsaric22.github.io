@@ -15,33 +15,35 @@
   z-index:1;
   width:100%;
   min-width:0;
-  padding:145px 0 125px;
+  padding:60px 0 80px;
   text-align:center;
 }
 
 #hero-title {
   display:flex;
   justify-content:center;
-  flex-wrap:wrap;
-  gap:0 .2em;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
   font-family:'Clash Display', var(--sans);
-  font-size:clamp(72px, 10.5vw, 148px);
-  font-weight:500;
-  line-height:1.05;
+  font-size:clamp(108px, 13.5vw, 184px);
+  font-weight:600;
+  line-height:1.04;
   letter-spacing:-.045em;
-  margin:0 0 36px;
+  margin:0 0 40px;
   text-shadow:0 3px 30px #233c52;
 }
 
-.name-line { display:inline-block; }
+.name-window { display:block; overflow:hidden; padding:.055em .1em; margin:-.04em 0; }
+.name-line { display:block; }
 
 .intro-description {
   display:grid;
   position:relative;
-  width:min(100%, 720px);
+  width:min(100%, 820px);
   margin:0 auto;
   font-family:'Fira Code', 'Courier New', monospace;
-  font-size:clamp(14px, 1.2vw, 17px);
+  font-size:clamp(17px, 1.55vw, 21px);
   font-weight:400;
   font-variant-ligatures:none;
   line-height:1.9;
@@ -72,29 +74,18 @@
   user-select:none;
 }
 
-/* Four staggered scenes share one clock: 8 seconds each, 32 seconds per loop.
-   Negative delays start the first scene immediately, with a 1-second crossfade. */
-.ambient-scene {
-  position:absolute;
-  inset:0;
-  opacity:0;
-  animation:scene-crossfade 32s linear infinite;
-}
-.scene-design { animation-delay:0s; }
-.scene-process { animation-delay:-24s; }
-.scene-photo { animation-delay:-16s; }
-.scene-video { animation-delay:-8s; }
-
 .ambient-motif {
   position:absolute;
-  width:clamp(180px, 25vw, 340px);
+  width:clamp(130px, 17vw, 235px);
+  top:0;
+  left:0;
+  will-change:transform;
   color:#86c9ed;
   stroke:currentColor;
   stroke-width:1.3;
   stroke-linecap:round;
   stroke-linejoin:round;
   opacity:.32;
-  animation:ambient-drift 15s ease-in-out infinite alternate;
 }
 
 .ambient-motif text {
@@ -105,14 +96,6 @@
   letter-spacing:2px;
 }
 
-.motif-design { left:8%; top:12%; --tilt:-13deg; }
-.motif-interface { right:6%; top:27%; --tilt:9deg; animation-delay:-6s; }
-.motif-process { left:5%; top:18%; width:clamp(220px, 32vw, 410px); --tilt:-5deg; animation-delay:-9s; }
-.motif-board { right:6%; top:24%; --tilt:8deg; animation-delay:-4s; }
-.motif-photo { left:8%; top:15%; --tilt:-8deg; animation-delay:-12s; }
-.motif-frames { right:8%; top:25%; --tilt:10deg; animation-delay:-5s; }
-.motif-video { left:6%; top:15%; --tilt:-9deg; animation-delay:-3s; }
-.motif-clapper { right:8%; top:25%; --tilt:10deg; animation-delay:-7s; }
 .design-curve { stroke-dasharray:300; animation:bezier-trace 9s ease-in-out infinite alternate; }
 .interface-cursor { fill:#233c52; animation:cursor-drift 7s ease-in-out infinite alternate; }
 .process-path { animation:process-flow 12s linear infinite; }
@@ -136,17 +119,6 @@
 #naslovna.background-paused .hero-ambient *,
 #naslovna.background-idle .hero-ambient * { animation-play-state:paused; }
 
-@keyframes ambient-drift {
-  from { transform:translate(-10px, 12px) rotate(var(--tilt)); }
-  to { transform:translate(18px, -18px) rotate(calc(var(--tilt) + 5deg)); }
-}
-@keyframes scene-crossfade {
-  0% { opacity:1; transform:translate(-12px, 6px); }
-  21.875% { opacity:1; transform:translate(12px, -6px); }
-  25% { opacity:0; transform:translate(16px, -8px); }
-  96.875% { opacity:0; transform:translate(-16px, 8px); }
-  100% { opacity:1; transform:translate(-12px, 6px); }
-}
 @keyframes cards-assemble {
   0%, 100% { transform:translateY(9px); }
   30%, 75% { transform:translateY(0); }
@@ -172,24 +144,37 @@
 
 @media(max-width:760px) {
   #naslovna { min-height:690px; }
-  #naslovna .hero-copy { padding:145px 0 155px; }
-  #hero-title { font-size:clamp(58px, 16vw, 100px); margin-bottom:28px; }
-  .intro-description { font-size:13px; max-width:540px; }
-  .ambient-motif { width:180px; opacity:.27; }
-  .motif-design, .motif-process, .motif-photo, .motif-video { left:-8%; top:12%; }
-  .motif-interface, .motif-board, .motif-frames, .motif-clapper { right:-8%; top:37%; }
-  .motif-process { width:230px; }
+  #naslovna .hero-copy { padding:65px 0 80px; }
+  #hero-title { font-size:clamp(90px, 18vw, 132px); margin-bottom:32px; }
+  .intro-description { font-size:16px; max-width:580px; }
+  .ambient-motif { width:125px; opacity:.27; }
   #naslovna .hero-bottom { font-size:7px; }
   #naslovna .hero-bottom > span:last-child { display:none; }
 }
 
 @media(max-width:420px) {
-  #hero-title { flex-direction:column; font-size:clamp(60px, 18vw, 76px); }
+  #hero-title { font-size:clamp(82px, 22vw, 94px); }
 }
 
-@media(prefers-reduced-motion:reduce) {
-  .hero-ambient * { animation:none!important; }
-  .ambient-scene { opacity:0; }
-  .scene-design { opacity:1; }
-  .ambient-toggle { display:none; }
+
+/* A full-width, softly blended surface replaces the old word strip. */
+.about-surface {
+  position:relative;
+  isolation:isolate;
+  background:linear-gradient(to bottom, transparent, #2B445E 110px, #2B445E calc(100% - 110px), transparent);
+  padding-block:60px;
+}
+.about-surface::before {
+  content:'';
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  pointer-events:none;
+  background-image:radial-gradient(circle, rgba(173, 209, 236, .3) 1px, transparent 1.2px);
+  background-size:18px 18px;
+  mask-image:linear-gradient(to bottom, transparent, #000 130px, #000 calc(100% - 130px), transparent);
+}
+.about-surface .about { border-bottom:0; }
+@media(max-width:760px) {
+  .about-surface { padding-block:40px; }
 }

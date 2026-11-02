@@ -6,18 +6,59 @@
   const introText = intro.querySelector('.intro-text');
   const welcome = introText.textContent;
   const nameLines = [...intro.querySelectorAll('.name-line')];
-  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  // This intro explicitly uses the same animation on desktop and mobile.
+  // The visible pause control remains available on both.
+  const ambient = intro.querySelector('.hero-ambient');
+  const motifs = [...ambient.querySelectorAll('.ambient-motif')];
+  let backgroundAnimations = [];
   const ambientToggle = intro.querySelector('.ambient-toggle');
   ambientToggle.hidden = false;
   ambientToggle.addEventListener('click', () => {
     const paused = intro.classList.toggle('background-paused');
     ambientToggle.setAttribute('aria-pressed', String(paused));
     ambientToggle.textContent = paused ? 'Pokreni pozadinu' : 'Pauziraj pozadinu';
+    if (paused) finishIntro();
+    syncBackgroundVisibility();
   });
   let introVisible = true;
   function syncBackgroundVisibility() {
-    intro.classList.toggle('background-idle', document.hidden || !introVisible);
+    const idle = document.hidden || !introVisible;
+    intro.classList.toggle('background-idle', idle);
+    const paused = idle || intro.classList.contains('background-paused');
+    backgroundAnimations.forEach(animation => paused ? animation.pause() : animation.play());
   }
+  function randomBackgroundPaths() {
+    backgroundAnimations.forEach(animation => animation.cancel());
+    backgroundAnimations = [];
+    const width = ambient.clientWidth;
+    const height = ambient.clientHeight;
+    if (!width || !height) return;
+    motifs.forEach((motif, index) => {
+      const maxX = Math.max(0, width - motif.clientWidth);
+      const maxY = Math.max(0, height - motif.clientHeight);
+      // Distribute the starting positions; every motif then follows its own path.
+      let x = ((index % 4) + Math.random() * .6) / 4 * maxX;
+      let y = (Math.floor(index / 4) + Math.random() * .5) / 2 * maxY;
+      const points = [];
+      for (let step = 0; step < 5; step++) {
+        const angle = Math.random() * 24 - 12;
+        points.push({ transform:`translate(${x}px, ${y}px) rotate(${angle}deg)` });
+        x = Math.max(0, Math.min(maxX, x + (Math.random() - .5) * width * .55));
+        y = Math.max(0, Math.min(maxY, y + (Math.random() - .5) * height * .45));
+      }
+      motif.style.transform = points[0].transform;
+      if (typeof motif.animate === 'function') {
+        backgroundAnimations.push(motif.animate(points, {
+          duration:28000 + Math.random() * 18000,
+          iterations:Infinity,
+          direction:'alternate',
+          easing:'ease-in-out'
+        }));
+      }
+    });
+    syncBackgroundVisibility();
+  }
+  new ResizeObserver(randomBackgroundPaths).observe(ambient);
   new IntersectionObserver(entries => {
     introVisible = entries[0].isIntersecting;
     syncBackgroundVisibility();
@@ -39,7 +80,7 @@
   }
 
   async function playIntro() {
-    if (motionPreference.matches || typeof nameLines[0].animate !== 'function') {
+    if (typeof nameLines[0].animate !== 'function') {
       finishIntro();
       return;
     }
@@ -60,9 +101,9 @@
     if (introFinished) return;
     nameLines.forEach((line, index) => {
       nameAnimations.push(line.animate([
-        { opacity:0, transform:'translateY(24px)' },
+        { opacity:0, transform:`translateY(${index === 0 ? '110%' : '-110%'})` },
         { opacity:1, transform:'translateY(0)' }
-      ], { duration:700, delay:index * 130, easing:'cubic-bezier(.2,.7,.2,1)', fill:'both' }));
+      ], { duration:1700, delay:index * 260, easing:'cubic-bezier(.22,.65,.2,1)', fill:'both' }));
     });
     await Promise.all(nameAnimations.map(animation => animation.finished.catch(() => {})));
     if (introFinished) return;
@@ -76,12 +117,11 @@
       introText.textContent = characters.slice(0, ++position).join('');
       if (position >= characters.length) { finishIntro(); return; }
       const character = characters[position - 1];
-      const delay = character === '\n' ? 220 : /[.!?]/.test(character) ? 130 : 18;
+      const delay = character === '\n' ? 380 : /[.!?]/.test(character) ? 180 : 29;
       introTimer = setTimeout(typeNext, delay);
     }
     typeNext();
   }
-  motionPreference.addEventListener('change', event => { if (event.matches) finishIntro(); });
   window.addEventListener('pagehide', finishIntro);
   playIntro().catch(finishIntro);
 
