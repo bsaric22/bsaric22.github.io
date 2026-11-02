@@ -27,6 +27,6 @@ Workflow priprema mapu samo s javnim datotekama. `.nojekyll` isključuje Jekyll.
 - `assets/main.js`: statični geometrijski prikazi, intenzitet oblika i navigacija.
 - `assets/favicon.svg`: ikona stranice.
 
-Naslovna sekcija `#naslovna` prikazuje veliko ime BORIS ŠARIĆ u sredini i uvodni tekst ispod njega. Pozadina sadrži pet diskretnih SVG motiva: grafički dizajn, UI/UX, poslovni procesi, video i fotografija. Stilovi naslovne sekcije su u `assets/hero.css`.
+Naslovna sekcija `#naslovna` prikazuje veliko ime BORIS ŠARIĆ u sredini i uvodni tekst ispod njega. Pozadina ciklički izmjenjuje četiri scene s po dva SVG motiva: grafički i UI/UX dizajn → poslovni procesi → fotografija → video produkcija. Svaka scena traje oko osam sekundi, uz sekundni prijelaz; puni krug traje 32 sekunde. Stilovi naslovne sekcije su u `assets/hero.css`.
 
 Naslovna sekcija prvo animira ime, zatim ispisuje uvod. Pozadinski motivi automatski se animiraju uz opacity 25–32%; mogu se pauzirati gumbom ispod uvoda i miruju izvan vidljivog dijela stranice. Uz `prefers-reduced-motion: reduce` sve je odmah vidljivo. Geometrijski prikazi ostaju statični i ponovno se crtaju samo pri promjeni veličine ili ručnom odabiru oblika i intenziteta. Navigacija nema kontrolu animacija. Osnovni sadržaj i navigacija rade i bez JavaScripta.

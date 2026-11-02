@@ -72,9 +72,22 @@
   user-select:none;
 }
 
+/* Four staggered scenes share one clock: 8 seconds each, 32 seconds per loop.
+   Negative delays start the first scene immediately, with a 1-second crossfade. */
+.ambient-scene {
+  position:absolute;
+  inset:0;
+  opacity:0;
+  animation:scene-crossfade 32s linear infinite;
+}
+.scene-design { animation-delay:0s; }
+.scene-process { animation-delay:-24s; }
+.scene-photo { animation-delay:-16s; }
+.scene-video { animation-delay:-8s; }
+
 .ambient-motif {
   position:absolute;
-  width:clamp(125px, 15vw, 210px);
+  width:clamp(180px, 25vw, 340px);
   color:#86c9ed;
   stroke:currentColor;
   stroke-width:1.3;
@@ -92,16 +105,23 @@
   letter-spacing:2px;
 }
 
-.motif-design { left:2%; top:5%; --tilt:-13deg; }
-.motif-interface { right:2%; top:6%; --tilt:9deg; animation-delay:-6s; }
-.motif-process { left:0; bottom:5%; width:clamp(155px, 20vw, 260px); --tilt:-5deg; animation-delay:-9s; }
-.motif-video { right:0; bottom:4%; --tilt:10deg; animation-delay:-3s; }
-.motif-photo { left:43%; bottom:-2%; width:clamp(110px, 12vw, 165px); --tilt:-8deg; animation-delay:-12s; opacity:.25; }
+.motif-design { left:8%; top:12%; --tilt:-13deg; }
+.motif-interface { right:6%; top:27%; --tilt:9deg; animation-delay:-6s; }
+.motif-process { left:5%; top:18%; width:clamp(220px, 32vw, 410px); --tilt:-5deg; animation-delay:-9s; }
+.motif-board { right:6%; top:24%; --tilt:8deg; animation-delay:-4s; }
+.motif-photo { left:8%; top:15%; --tilt:-8deg; animation-delay:-12s; }
+.motif-frames { right:8%; top:25%; --tilt:10deg; animation-delay:-5s; }
+.motif-video { left:6%; top:15%; --tilt:-9deg; animation-delay:-3s; }
+.motif-clapper { right:8%; top:25%; --tilt:10deg; animation-delay:-7s; }
 .design-curve { stroke-dasharray:300; animation:bezier-trace 9s ease-in-out infinite alternate; }
 .interface-cursor { fill:#233c52; animation:cursor-drift 7s ease-in-out infinite alternate; }
 .process-path { animation:process-flow 12s linear infinite; }
 .video-playhead { stroke-width:2; animation:timeline-scan 9s ease-in-out infinite alternate; }
 .camera-aperture { transform-box:fill-box; transform-origin:center; animation:aperture-turn 18s ease-in-out infinite alternate; }
+.process-cards { animation:cards-assemble 8s ease-in-out infinite; }
+.process-check { stroke-dasharray:45; animation:check-draw 8s ease-in-out infinite; }
+.focus-frame { transform-box:fill-box; transform-origin:center; animation:focus-adjust 8s ease-in-out infinite; }
+.clapper-hinge { transform-origin:23px 67px; animation:clapper-close 8s ease-in-out infinite; }
 
 .ambient-toggle {
   padding:9px 0;
@@ -117,8 +137,32 @@
 #naslovna.background-idle .hero-ambient * { animation-play-state:paused; }
 
 @keyframes ambient-drift {
-  from { transform:translateY(0) rotate(var(--tilt)); }
-  to { transform:translateY(-15px) rotate(calc(var(--tilt) + 5deg)); }
+  from { transform:translate(-10px, 12px) rotate(var(--tilt)); }
+  to { transform:translate(18px, -18px) rotate(calc(var(--tilt) + 5deg)); }
+}
+@keyframes scene-crossfade {
+  0% { opacity:1; transform:translate(-12px, 6px); }
+  21.875% { opacity:1; transform:translate(12px, -6px); }
+  25% { opacity:0; transform:translate(16px, -8px); }
+  96.875% { opacity:0; transform:translate(-16px, 8px); }
+  100% { opacity:1; transform:translate(-12px, 6px); }
+}
+@keyframes cards-assemble {
+  0%, 100% { transform:translateY(9px); }
+  30%, 75% { transform:translateY(0); }
+}
+@keyframes check-draw {
+  0%, 15% { stroke-dashoffset:45; }
+  45%, 85% { stroke-dashoffset:0; }
+  100% { stroke-dashoffset:45; }
+}
+@keyframes focus-adjust {
+  0%, 100% { transform:scale(1.15); }
+  40%, 65% { transform:scale(.9); }
+}
+@keyframes clapper-close {
+  0%, 100% { transform:rotate(-12deg); }
+  35%, 75% { transform:rotate(0); }
 }
 @keyframes bezier-trace { from { stroke-dashoffset:110; } to { stroke-dashoffset:0; } }
 @keyframes cursor-drift { from { transform:translate(0, 0); } to { transform:translate(-32px, 18px); } }
@@ -131,12 +175,10 @@
   #naslovna .hero-copy { padding:145px 0 155px; }
   #hero-title { font-size:clamp(58px, 16vw, 100px); margin-bottom:28px; }
   .intro-description { font-size:13px; max-width:540px; }
-  .ambient-motif { width:120px; }
-  .motif-design { left:0; top:2%; }
-  .motif-interface { right:0; top:3%; }
-  .motif-process { width:145px; bottom:5%; }
-  .motif-video { width:120px; bottom:7%; }
-  .motif-photo { width:95px; left:37%; bottom:0; }
+  .ambient-motif { width:180px; opacity:.27; }
+  .motif-design, .motif-process, .motif-photo, .motif-video { left:-8%; top:12%; }
+  .motif-interface, .motif-board, .motif-frames, .motif-clapper { right:-8%; top:37%; }
+  .motif-process { width:230px; }
   #naslovna .hero-bottom { font-size:7px; }
   #naslovna .hero-bottom > span:last-child { display:none; }
 }
@@ -147,5 +189,7 @@
 
 @media(prefers-reduced-motion:reduce) {
   .hero-ambient * { animation:none!important; }
+  .ambient-scene { opacity:0; }
+  .scene-design { opacity:1; }
   .ambient-toggle { display:none; }
 }
