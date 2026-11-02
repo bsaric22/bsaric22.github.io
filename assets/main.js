@@ -1,12 +1,29 @@
 (() => {
   'use strict';
-  // Only the intro animates, once per page load. The complete welcome remains
+  // The name and welcome animate once per page load. The complete welcome remains
   // available to assistive technology and without JavaScript.
   const intro = document.querySelector('#naslovna');
   const introText = intro.querySelector('.intro-text');
   const welcome = introText.textContent;
   const nameLines = [...intro.querySelectorAll('.name-line')];
   const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const ambientToggle = intro.querySelector('.ambient-toggle');
+  ambientToggle.hidden = false;
+  ambientToggle.addEventListener('click', () => {
+    const paused = intro.classList.toggle('background-paused');
+    ambientToggle.setAttribute('aria-pressed', String(paused));
+    ambientToggle.textContent = paused ? 'Pokreni pozadinu' : 'Pauziraj pozadinu';
+  });
+  let introVisible = true;
+  function syncBackgroundVisibility() {
+    intro.classList.toggle('background-idle', document.hidden || !introVisible);
+  }
+  new IntersectionObserver(entries => {
+    introVisible = entries[0].isIntersecting;
+    syncBackgroundVisibility();
+  }).observe(intro);
+  document.addEventListener('visibilitychange', syncBackgroundVisibility);
+  syncBackgroundVisibility();
   let introTimer;
   let introFinished = false;
   const nameAnimations = [];

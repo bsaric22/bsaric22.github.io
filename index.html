@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#233C52">
   <title>Boris Šarić — Ideje u pokretu.</title>
   <meta name="description" content="Osobni kutak Borisa Šarića. Malo koda, malo dizajna i puno znatiželje. Istraži interaktivne eksperimente i ideje u pokretu.">
-  <meta property="og:title" content="Boris Šarić — Ideje u pokretu.">
+  <meta property="og:title" content="Boris Šarić - portfolio">
   <meta property="og:description" content="Malo koda, malo dizajna i puno znatiželje. Dobro došao u moj digitalni kutak.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bsaric22.github.io/">
@@ -18,6 +18,7 @@
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/styles.css">
+  <link rel="stylesheet" href="./assets/hero.css">
   <script src="./assets/main.js" defer></script>
 </head>
 <body>
@@ -35,20 +36,47 @@
   </header>
   <main id="main">
     <section class="hero wrap" id="naslovna" aria-labelledby="hero-title">
-      <div class="hero-portrait">
-        <!-- Zamijeni .portrait-placeholder s <img class="portrait-image" src="./assets/boris.jpg" alt="Boris Šarić"> kad fotografija bude spremna. -->
-        <div class="portrait-placeholder" role="img" aria-label="Prostor rezerviran za fotografiju Borisa Šarića">
-          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="22" r="10"/><path d="M13 53c0-11 8.5-18 19-18s19 7 19 18"/></svg>
-          <span>Prostor za fotografiju</span>
-        </div>
-        <span class="portrait-corner" aria-hidden="true">BŠ / 01</span>
+      <div class="hero-ambient" aria-hidden="true">
+        <svg class="ambient-motif motif-design" viewBox="0 0 200 160" fill="none">
+          <path class="design-curve" d="M25 125C25 20 175 140 175 35"/>
+          <path d="M25 125V35M175 35v90M25 35h150" stroke-dasharray="4 7"/>
+          <circle cx="25" cy="35" r="5"/><circle cx="175" cy="125" r="5"/>
+          <rect x="19" y="119" width="12" height="12"/><rect x="169" y="29" width="12" height="12"/>
+          <text x="25" y="153">GRAPHIC DESIGN</text>
+        </svg>
+        <svg class="ambient-motif motif-interface" viewBox="0 0 210 170" fill="none">
+          <rect x="12" y="14" width="181" height="128" rx="10"/><path d="M12 40h181"/>
+          <circle cx="27" cy="27" r="2"/><circle cx="38" cy="27" r="2"/><circle cx="49" cy="27" r="2"/>
+          <rect x="27" y="55" width="47" height="71" rx="4"/><path d="M89 59h85M89 71h64M89 83h76"/>
+          <rect x="89" y="104" width="50" height="22" rx="5"/>
+          <path class="interface-cursor" d="m153 88 2 24 7-7 9 6 4-6-9-6 9-3Z"/>
+          <text x="14" y="164">UI / UX</text>
+        </svg>
+        <svg class="ambient-motif motif-process" viewBox="0 0 250 145" fill="none">
+          <rect x="8" y="47" width="49" height="36" rx="7"/><path class="process-path" d="M57 65h36M143 65h37M119 41V17h85v30" stroke-dasharray="5 6"/>
+          <path d="m93 65 26-24 24 24-24 24Z"/><rect x="180" y="47" width="57" height="36" rx="7"/>
+          <path d="m27 65 5 5 10-11M198 65h21M208 55v20"/>
+          <text x="40" y="121">BUSINESS PROCESSES</text>
+        </svg>
+        <svg class="ambient-motif motif-video" viewBox="0 0 220 165" fill="none">
+          <rect x="18" y="15" width="175" height="99" rx="8"/><path d="m94 43 34 21-34 21Z"/>
+          <rect x="18" y="126" width="42" height="13" rx="3"/><rect x="65" y="126" width="73" height="13" rx="3"/><rect x="143" y="126" width="50" height="13" rx="3"/>
+          <path class="video-playhead" d="M77 119v27m-4-27h8"/>
+          <text x="18" y="161">VIDEO PRODUCTION</text>
+        </svg>
+        <svg class="ambient-motif motif-photo" viewBox="0 0 185 165" fill="none">
+          <path d="M31 40h27l9-15h48l9 15h26a12 12 0 0 1 12 12v67a12 12 0 0 1-12 12H31a12 12 0 0 1-12-12V52a12 12 0 0 1 12-12Z"/>
+          <circle cx="91" cy="85" r="32"/><circle cx="91" cy="85" r="20"/><path d="M133 55h13"/>
+          <g class="camera-aperture"><path d="m91 65 17 30H74Zm-17 10h34M74 95l17-30m17 30H74"/></g>
+          <text x="32" y="157">PHOTOGRAPHY</text>
+        </svg>
       </div>
       <div class="hero-copy">
-        <h1 id="hero-title"><span class="name-line">Boris</span> <span class="name-line surname">Šarić</span></h1>
+        <h1 id="hero-title"><span class="name-line">BORIS</span> <span class="name-line surname">ŠARIĆ</span></h1>
         <p class="intro-description"><span class="intro-text">Dobro došli!
 Ovdje možete pronaći pregled mojih radova, projekata i znanja s kojima svakodnevno gradim nova rješenja.</span></p>
       </div>
-      <div class="hero-bottom"><span>NEPRESTANO U NASTAJANJU</span><a href="#o-meni">Nastavi istraživati <span aria-hidden="true">↓</span></a><span>V.01 / 2026</span></div>
+      <div class="hero-bottom"><button class="ambient-toggle" type="button" aria-pressed="false" hidden>Pauziraj pozadinu</button><a href="#o-meni">Nastavi istraživati <span aria-hidden="true">↓</span></a><span>V.01 / 2026</span></div>
     </section>
     <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>ZNATIŽELJA <i>✳</i> KOD <i>✳</i> DIZAJN <i>✳</i> EKSPERIMENTI <i>✳</i> DOBRE IDEJE <i>✳</i> </span><span>ZNATIŽELJA <i>✳</i> KOD <i>✳</i> DIZAJN <i>✳</i> EKSPERIMENTI <i>✳</i> DOBRE IDEJE <i>✳</i> </span></div></div>
     <section class="about wrap section" id="o-meni" aria-labelledby="about-title"><div class="section-label"><span class="section-number">01 /</span> O MENI</div><div class="about-content"><h2 id="about-title">Iza svakog klika,<br>jedna <span class="serif">znatiželjna glava.</span></h2><div class="about-columns"><p>Ovo je moj mali prostor za velike i male ideje. Mjesto gdje se susreću tehnologija, kreativnost i želja da nešto napravim na svoj način.</p><p>Stranica je tek na početku. Zasad je tu nekoliko eksperimenata, malo igre i otvoren prostor za sve što dolazi. Slobodno istraži — zato je i tu.</p></div><div class="interests"><span>⌘ &nbsp; Kod & logika</span><span>◉ &nbsp; Vizualno & intuitivno</span><span>✳ &nbsp; Učenje kroz igru</span></div></div></section>
