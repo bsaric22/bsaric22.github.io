@@ -1,5 +1,23 @@
 (() => {
   'use strict';
+  // Duplicate only the visual strip; edit the original list in index.html.
+  const skills = document.querySelector('.skills');
+  if (skills) {
+    const track = skills.querySelector('.skills-track');
+    const copy = skills.querySelector('.skills-list').cloneNode(true);
+    copy.setAttribute('aria-hidden', 'true');
+    copy.setAttribute('inert', '');
+    track.append(copy);
+    skills.classList.add('skills-ready');
+    const toggle = skills.querySelector('.skills-toggle');
+    // The pause button is optional; removing it must not stop hero initialization.
+    toggle?.removeAttribute('hidden');
+    toggle?.addEventListener('click', () => {
+      const paused = skills.classList.toggle('skills-paused');
+      toggle.setAttribute('aria-pressed', String(paused));
+      toggle.textContent = paused ? 'Pokreni pomicanje' : 'Pauziraj pomicanje';
+    });
+  }
   // The name and welcome animate once per page load. The complete welcome remains
   // available to assistive technology and without JavaScript.
   const intro = document.querySelector('#naslovna');

@@ -189,7 +189,7 @@
   display:grid;
   grid-template-columns:minmax(0, .9fr) minmax(0, 1.1fr);
   align-items:center;
-  gap:clamp(48px, 8vw, 120px);
+  gap:clamp(40px, 6vw, 88px);
   padding-block:90px;
 }
 .about-drafting {
@@ -212,7 +212,7 @@
 .about-portrait {
   position:relative;
   width:100%;
-  max-width:450px;
+  max-width:500px;
   aspect-ratio:4 / 5;
   justify-self:center;
   border:1px solid rgba(186, 202, 214, .24);
@@ -232,7 +232,8 @@
   font-size:12px;
 }
 .about-photo-placeholder svg { width:72px; height:72px; stroke:currentColor; stroke-width:1; }
-.about-portrait > img { display:block; width:100%; height:100%; object-fit:cover; border-radius:inherit; }
+.about-portrait > img { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:cover; border-radius:inherit; }
+.about-content { min-width:0; }
 .portrait-registration { position:absolute; color:#9da8b0; font:22px 'Fira Code', monospace; }
 .portrait-registration.top-left { top:-15px; left:-8px; }
 .portrait-registration.bottom-right { bottom:-15px; right:-8px; }
@@ -259,6 +260,54 @@
   font:11px 'Fira Code', monospace;
   letter-spacing:2px;
   color:#97a6b2;
+}
+.about-biography p { margin:0; }
+.about-biography p + p { margin-top:1.2em; }
+.skills {
+  padding:34px 0 44px;
+  background:linear-gradient(180deg, #17191c, #121519);
+  border-block:1px solid rgba(173, 185, 196, .09);
+}
+.skills-heading { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-bottom:30px; }
+.skills-heading h2 { margin:0; color:#aab5bf; font:400 12px 'Fira Code', monospace; letter-spacing:.06em; }
+.skills-toggle { padding:8px 12px; border:1px solid #46515b; border-radius:20px; background:transparent; color:#c7cdd2; font:400 11px 'Fira Code', monospace; cursor:pointer; }
+.skills-toggle:hover { border-color:var(--accent); color:#fff; }
+.skills-toggle:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
+.skills-viewport { overflow-x:auto; mask-image:linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+.skills-ready .skills-viewport { overflow:hidden; }
+.skills-track { display:flex; width:max-content; }
+.skills-list { display:flex; flex-shrink:0; align-items:center; gap:64px; list-style:none; margin:0; padding:0 64px 0 0; }
+.skills-ready .skills-track { animation:skills-drift 140s linear infinite; }
+.skills-paused .skills-track { animation-play-state:paused; }
+.skill-item { display:flex; align-items:center; gap:16px; white-space:nowrap; color:#d6dce1; }
+.skill-logo { display:flex; align-items:center; justify-content:center; flex:0 0 52px; width:52px; height:52px; gap:6px; }
+.skill-logo img { display:block; width:40px; height:40px; object-fit:contain; filter:brightness(0) invert(.76); }
+.skill-logo-pair { flex-basis:78px; width:78px; }
+.skill-logo-pair img { width:36px; height:40px; }
+.skill-logo-wide { flex-basis:88px; width:88px; }
+.skill-logo-wide img { width:88px; }
+.skill-name { font:500 23px 'Outfit', sans-serif; letter-spacing:-.02em; }
+.skill-code .skill-name { font-family:'Fira Code', monospace; font-size:21px; }
+.skill-microsoft .skill-name, .skill-adobe .skill-name { font-family:'Segoe UI', Arial, sans-serif; font-weight:600; }
+.skill-unity .skill-name, .skill-figma .skill-name { font-family:Arial, sans-serif; font-weight:600; }
+.skill-python .skill-name, .skill-node .skill-name { font-weight:500; letter-spacing:.01em; }
+.skill-oracle .skill-name { font-family:Arial, sans-serif; letter-spacing:.04em; }
+.skill-postgres .skill-name { font-family:Georgia, serif; }
+.skill-ibm .skill-name { font-family:Georgia, serif; font-weight:700; }
+@keyframes skills-drift { to { transform:translateX(-50%); } }
+@media(max-width:760px) {
+  .skills-heading { gap:12px; }
+  .skills-heading h2 { font-size:10px; }
+  .skills-toggle { font-size:10px; }
+  .skills-list { gap:40px; padding-right:40px; }
+  .skill-logo { flex-basis:44px; width:44px; height:44px; }
+  .skill-logo img { width:34px; height:34px; }
+  .skill-logo-pair { flex-basis:66px; width:66px; }
+  .skill-logo-pair img { width:30px; }
+  .skill-logo-wide { flex-basis:76px; width:76px; }
+  .skill-logo-wide img { width:76px; }
+  .skill-name { font-size:20px; }
+  .skill-code .skill-name { font-size:18px; }
 }
 .about-signature span { width:40px; height:1px; background:var(--accent); }
 @media(max-width:760px) {

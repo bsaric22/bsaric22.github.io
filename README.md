@@ -31,4 +31,6 @@ Naslovna sekcija `#naslovna` prikazuje ime iznad prezimena, s prezimenom pomaknu
 
 Naslovna sekcija na desktopu i mobitelu prvo animira ime i prezime iz zajedničke linije, zatim postupno ispisuje uvod. Pokretanje je izričito omogućeno na oba tipa uređaja. Pozadina se može pauzirati gumbom ispod uvoda i miruje izvan vidljivog dijela stranice.
 
-Sekcija O meni koristi tamnu podlogu #1E1E1E, točkastu teksturu i geometrijske nacrte. Lijevo je `.about-portrait`, a desno naslov i `.about-biography` u Fira Codeu. Zamijeni privremeni tekst osobnim opisom, a `.about-photo-placeholder` vlastitom slikom; primjer HTML-a je u komentaru.
+Sekcija O meni koristi tamnu podlogu #1E1E1E, točkastu teksturu i geometrijske nacrte. Lijevo je fotografija u `.about-portrait`, a desno naslov i `.about-biography` u Fira Codeu.
+
+Na dnu je tamnija traka s 19 alata i lokalnim SVG logotipima u sivoj boji. Popis uređuj samo jednom u `index.html`, unutar `.skills-list`; JavaScript automatski stvara vizualnu kopiju za neprimjetan prijelaz. Datoteke, izvori i licence logotipa nalaze se u `assets/logos/`. Siva boja definirana je CSS filtrom na `.skill-logo img`, a nazivi koriste približne sistemske i postojeće fontove. Traka se pomiče ulijevo, krug traje 140 sekundi i može se pauzirati gumbom. Trajanje je u pravilu `.skills-ready .skills-track` u `assets/hero.css`. Bez JavaScripta popis se može vodoravno pomicati ručno.
