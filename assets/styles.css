@@ -16,13 +16,13 @@
 }
 
 html {
-  scroll-behavior:smooth;
+  scroll-behavior:auto;
   scroll-padding-top:128px;
 }
 
 body {
   margin:0;
-  background:radial-gradient(ellipse at 12% 8%, #004F8F 0%, transparent 52%), radial-gradient(ellipse at 92% 68%, #004F8F 0%, transparent 58%), linear-gradient(135deg, #233C52 15%, #004F8F 52%, #233C52 90%);
+  background:radial-gradient(ellipse at 90% 20%, rgba(0, 79, 143, .3) 0%, transparent 58%), radial-gradient(ellipse at 15% 85%, rgba(0, 79, 143, .18) 0%, transparent 52%), #233C52;
   background-attachment:fixed;
   color:var(--ink);
   font-family:var(--sans);
@@ -61,7 +61,6 @@ button:focus-visible,a:focus-visible,input:focus-visible {
   margin-inline:auto;
 }
 
-
 .brand {
   display:flex;
   align-items:baseline;
@@ -80,14 +79,9 @@ button:focus-visible,a:focus-visible,input:focus-visible {
   margin-left:18px;
 }
 
-
-
 .text-link:hover {
   color:var(--accent);
 }
-
-
-
 
 .hero {
   display:grid;
@@ -139,7 +133,7 @@ h1 {
   color:var(--accent);
   font-size:66px;
   margin-left:16px;
-  animation:spin 24s linear infinite;
+
 }
 
 .hero-description {
@@ -162,12 +156,11 @@ h1 {
   padding:18px 22px;
   font-size:12px;
   border-radius:3px;
-  transition:background .2s,transform .2s;
+
 }
 
 .button:hover {
   background:var(--accent);
-  transform:translateY(-3px);
 }
 
 .button-dark {
@@ -282,7 +275,7 @@ h1 {
 .ticker-track {
   display:flex;
   width:max-content;
-  animation:marquee 40s linear infinite;
+
 }
 
 .ticker-track>span {
@@ -428,11 +421,10 @@ h2 {
   place-items:center;
   background:var(--paper);
   border-radius:50%;
-  transition:transform .25s,background .25s;
+
 }
 
 .experiment:hover .experiment-arrow {
-  transform:rotate(45deg);
   background:var(--accent);
 }
 
@@ -466,7 +458,7 @@ h2 {
   height:180px;
   position:relative;
   transform:rotate(-30deg);
-  transition:transform .7s;
+
 }
 
 .mini-orbit i {
@@ -497,16 +489,12 @@ h2 {
   transform:rotateX(75deg);
 }
 
-.experiment:hover .mini-orbit {
-  transform:rotate(20deg) scale(1.1);
-}
-
 .wave-lines {
   position:relative;
   width:100%;
   height:160px;
   transform:rotate(-20deg);
-  transition:transform .7s;
+
 }
 
 .wave-lines i {
@@ -551,10 +539,6 @@ h2 {
   --n:7;
 }
 
-.experiment:hover .wave-lines {
-  transform:rotate(-5deg) translateY(-15px);
-}
-
 .dot-grid {
   width:190px;
   height:190px;
@@ -562,11 +546,7 @@ h2 {
   background-image:radial-gradient(#62bdf3 2px,transparent 2.5px);
   background-size:14px 14px;
   transform:perspective(200px) rotateX(25deg) rotate(-30deg);
-  transition:transform .7s;
-}
 
-.experiment:hover .dot-grid {
-  transform:perspective(200px) rotateX(-15deg) rotate(-10deg);
 }
 
 .playground {
@@ -627,7 +607,7 @@ h2 {
   background:transparent;
   color:var(--ink);
   font-size:11px;
-  transition:background .2s,color .2s;
+
 }
 
 .mode-controls button[aria-pressed=true] {
@@ -704,11 +684,7 @@ input[type=range] {
   background:var(--accent);
   color:var(--paper);
   font-size:60px;
-  transition:transform .3s;
-}
 
-.contact-link:hover {
-  transform:rotate(45deg);
 }
 
 .contact-bottom {
@@ -774,36 +750,6 @@ input[type=range] {
   overflow:hidden;
   clip-path:inset(50%);
   white-space:nowrap;
-}
-
-.reveal {
-  transition:opacity .6s,transform .6s;
-}
-
-.reveal.pending {
-  opacity:0;
-  transform:translateY(24px);
-}
-
-body.motion-paused *,body.motion-paused *::before,body.motion-paused *::after {
-  animation-play-state:paused!important;
-  transition:none!important;
-}
-
-html:has(body.motion-paused) {
-  scroll-behavior:auto;
-}
-
-@keyframes spin {
-  to {
-    transform:rotate(360deg);
-  }
-}
-
-@keyframes marquee {
-  to {
-    transform:translateX(-50%);
-  }
 }
 
 @media(min-width:1600px) {
@@ -1034,20 +980,6 @@ html:has(body.motion-paused) {
   }
 }
 
-@media(prefers-reduced-motion:reduce) {
-  html {
-    scroll-behavior:auto;
-  }
-  *,*::before,*::after {
-    animation:none!important;
-    transition:none!important;
-  }
-  .reveal.pending {
-    opacity:1;
-    transform:none;
-  }
-}
-
 /* Floating navigation: shared geometry for desktop and mobile. */
 main {
   padding-top:128px;
@@ -1108,7 +1040,7 @@ main {
   color:#fff;
   font-size:16px;
   font-weight:500;
-  transition:color .2s;
+
 }
 
 .header nav a[aria-current="location"] {
@@ -1125,16 +1057,6 @@ main {
   align-items:center;
   justify-content:flex-end;
   gap:10px;
-}
-
-.motion-toggle {
-  width:36px;
-  height:36px;
-  border:1px solid var(--line);
-  border-radius:50%;
-  background:rgba(2, 12, 56, .12);
-  color:#fff;
-  font-size:13px;
 }
 
 .menu-toggle {
@@ -1154,7 +1076,7 @@ main {
   margin:5px 0;
   border-radius:2px;
   background:currentColor;
-  transition:transform .2s, opacity .2s;
+
 }
 
 .menu-toggle[aria-expanded="true"] span:nth-child(1) {
@@ -1213,11 +1135,6 @@ main {
     grid-row:1;
     gap:6px;
   }
-  .motion-toggle {
-    width:30px;
-    height:30px;
-    font-size:11px;
-  }
   .menu-toggle:not([hidden]) {
     display:block;
   }
@@ -1249,5 +1166,20 @@ main {
   }
   .footer.wrap {
     padding-inline:20px;
+  }
+}
+
+.surname {
+  color:var(--accent);
+}
+
+.nav-brand {
+  white-space:nowrap;
+}
+
+@media(max-width:420px) {
+  .nav-brand {
+    font-size:16px;
+    gap:8px;
   }
 }

@@ -1,8 +1,8 @@
-# bsaric22 — osobna stranica
+# Boris Šarić — osobna stranica
 
 Statična, responzivna osobna stranica na hrvatskom. HTML, CSS i JavaScript, bez vanjskih biblioteka ili build ovisnosti. Navigacija koristi Outfit Medium (500) putem Google Fonts, uz lokalni zamjenski font ako preuzimanje nije dostupno.
 
-Pozadina kombinira `#233C52` i `#004F8F`, a footer koristi `#020C38`. Fiksirana navigacija ima zaobljenje od 20 px, mobilni izbornik i automatsko označavanje aktivne sekcije plavom bojom `#23A9F2`. Sekcije su `#o-meni`, `#portfolio` i `#kontakt`; uvodni ekran nema aktivnu stavku, a interaktivno igralište pripada Portfoliju.
+Pozadinom prevladava `#233C52` uz diskretne naglaske `#004F8F`, a footer koristi `#020C38`. Fiksirana navigacija ima zaobljenje od 20 px, mobilni izbornik i automatsko označavanje aktivne sekcije plavom bojom `#23A9F2`. Sekcije su `#o-meni`, `#portfolio` i `#kontakt`; uvodni ekran nema aktivnu stavku, a interaktivno igralište pripada Portfoliju.
 
 ## Lokalni pregled
 
@@ -24,7 +24,7 @@ Workflow priprema mapu samo s javnim datotekama. `.nojekyll` isključuje Jekyll.
 
 - `index.html`: ime, uvod, tekst o meni, poveznice i metapodaci. Tekst je početni prijedlog; eksperimenti su interaktivni demo primjeri, a ne tvrdnje o ranijim projektima.
 - `assets/styles.css`: boje, tipografija, raspored i animacije.
-- `assets/main.js`: interaktivni oblici, intenzitet animacije, pauza i navigacija.
+- `assets/main.js`: statični geometrijski prikazi, intenzitet oblika i navigacija.
 - `assets/favicon.svg`: ikona stranice.
 
-Animacije poštuju `prefers-reduced-motion`, mogu se pauzirati i automatski staju kada kartica ili platno nisu vidljivi. Osnovni sadržaj i navigacija rade i bez JavaScripta.
+Animacije su isključene. Geometrijski prikazi su statični i ponovno se crtaju samo pri promjeni veličine ili ručnom odabiru oblika i intenziteta. Navigacija nema kontrolu animacija. Osnovni sadržaj i navigacija rade i bez JavaScripta.

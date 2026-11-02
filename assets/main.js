@@ -67,16 +67,12 @@
   document.fonts.ready.then(scheduleNavigationUpdate);
   updateActiveSection();
 
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let paused = reducedMotion.matches;
+  // Shapes are static: redraw only on resize or explicit control changes.
   let mode = 'orbit';
   let intensity = 0.5;
-  let time = 0;
-  let previousTime = 0;
-  let frame = 0;
-  const toggle = document.querySelector('.motion-toggle');
+  const time = 0;
   const canvases = [...document.querySelectorAll('canvas')].map(canvas => ({
-    canvas, ctx: canvas.getContext('2d'), width: 0, height: 0, visible: false,
+    canvas, ctx: canvas.getContext('2d'), width: 0, height: 0,
     pointer: { x: 0, y: 0 }, hero: canvas.id === 'hero-canvas'
   })).filter(item => item.ctx);
 
@@ -150,19 +146,6 @@
     else drawGrid(item, time);
   }
 
-  function tick(now) {
-    frame = 0;
-    if (paused || document.hidden || !canvases.some(item => item.visible)) { previousTime = 0; return; }
-    if (previousTime) time += Math.min((now - previousTime) / 1000, 0.05) * (0.35 + intensity * 1.3);
-    previousTime = now;
-    canvases.filter(item => item.visible).forEach(draw);
-    frame = requestAnimationFrame(tick);
-  }
-
-  function start() {
-    if (!frame && !paused && !document.hidden && canvases.some(item => item.visible)) frame = requestAnimationFrame(tick);
-  }
-
   const resizeObserver = new ResizeObserver(entries => {
     for (const entry of entries) {
       const item = canvases.find(candidate => candidate.canvas === entry.target);
@@ -177,45 +160,7 @@
     }
   });
 
-  const visibilityObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      const item = canvases.find(candidate => candidate.canvas === entry.target);
-      item.visible = entry.isIntersecting;
-      if (item.visible) draw(item);
-    });
-    start();
-  });
-
-  canvases.forEach(item => {
-    resizeObserver.observe(item.canvas);
-    visibilityObserver.observe(item.canvas);
-    item.canvas.addEventListener('pointermove', event => {
-      if (paused) return;
-      const rect = item.canvas.getBoundingClientRect();
-      item.pointer.x = (event.clientX - rect.left) / rect.width - 0.5;
-      item.pointer.y = (event.clientY - rect.top) / rect.height - 0.5;
-    });
-    item.canvas.addEventListener('pointerleave', () => { item.pointer.x = 0; item.pointer.y = 0; });
-  });
-
-  function updateMotion() {
-    document.body.classList.toggle('motion-paused', paused);
-    toggle.setAttribute('aria-pressed', String(paused));
-    const label = paused ? 'Pokreni animacije' : 'Pauziraj animacije';
-    toggle.setAttribute('aria-label', label);
-    toggle.title = label;
-    toggle.firstElementChild.textContent = paused ? '▷' : 'Ⅱ';
-    if (paused) { cancelAnimationFrame(frame); frame = 0; previousTime = 0; }
-    else start();
-  }
-  toggle.hidden = false;
-  toggle.addEventListener('click', () => { paused = !paused; updateMotion(); });
-  reducedMotion.addEventListener('change', event => { paused = event.matches; updateMotion(); });
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) { cancelAnimationFrame(frame); frame = 0; previousTime = 0; }
-    else start();
-  });
-  updateMotion();
+  canvases.forEach(item => resizeObserver.observe(item.canvas));
 
   const labels = { orbit: '001 — ORBITA', wave: '002 — VALOVI', grid: '003 — MREŽA' };
   function selectMode(next) {
@@ -234,15 +179,4 @@
   });
   document.querySelector('#year').textContent = new Date().getFullYear();
 
-  if (!reducedMotion.matches) {
-    const revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.remove('pending'); revealObserver.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.about-content, .experiment, .contact-row').forEach(element => {
-      element.classList.add('reveal', 'pending');
-      revealObserver.observe(element);
-    });
-  }
 })();
