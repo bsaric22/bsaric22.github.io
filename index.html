@@ -14,14 +14,16 @@
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&family=Outfit:wght@500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/styles.css">
   <script src="./assets/main.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Preskoči na sadržaj</a>
   <header class="header">
-    <a class="nav-brand" href="#" aria-label="Boris Šarić, početna"><span class="brand-mark" aria-hidden="true"></span><span>BORIS <span class="surname">ŠARIĆ</span></span></a>
+    <a class="nav-brand" href="#naslovna" aria-label="Boris Šarić, početna"><span class="brand-mark" aria-hidden="true"></span><span>BORIS <span class="surname">ŠARIĆ</span></span></a>
     <nav id="site-navigation" aria-label="Glavna navigacija">
       <a href="#o-meni">O meni</a>
       <a href="#portfolio">Portfolio</a>
@@ -32,9 +34,20 @@
     </div>
   </header>
   <main id="main">
-    <section class="hero wrap" aria-labelledby="hero-title">
-      <div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span> OSOBNI KUTAK NA INTERNETU</p><h1 id="hero-title">Znatiželja.<br>Ideje.<br><span class="serif">U pokretu.</span><span class="title-star" aria-hidden="true">✳</span></h1><p class="hero-description">Bok, ja sam <strong>BORIS <span class="surname">ŠARIĆ</span></strong>.<br>Malo koda, malo dizajna i puno pitanja<br class="desktop-break"> koja počinju s „a što ako…”.</p><a class="button button-dark" href="#portfolio">Zaviri u moj svijet <span aria-hidden="true">↘</span></a></div>
-      <div class="hero-art" aria-label="Plava orbitalna skulptura"><div class="art-corner top-left">FIG. 01 — ZNATIŽELJA</div><div class="art-cross" aria-hidden="true">+</div><canvas id="hero-canvas" aria-hidden="true"></canvas><div class="orbit-fallback" aria-hidden="true"></div><span class="art-caption">NIŠTA ZANIMLJIVO NE STOJI NA MJESTU.</span><span class="art-coordinate" aria-hidden="true">X 022<br>Y 001</span></div>
+    <section class="hero wrap" id="naslovna" aria-labelledby="hero-title">
+      <div class="hero-portrait">
+        <!-- Zamijeni .portrait-placeholder s <img class="portrait-image" src="./assets/boris.jpg" alt="Boris Šarić"> kad fotografija bude spremna. -->
+        <div class="portrait-placeholder" role="img" aria-label="Prostor rezerviran za fotografiju Borisa Šarića">
+          <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="22" r="10"/><path d="M13 53c0-11 8.5-18 19-18s19 7 19 18"/></svg>
+          <span>Prostor za fotografiju</span>
+        </div>
+        <span class="portrait-corner" aria-hidden="true">BŠ / 01</span>
+      </div>
+      <div class="hero-copy">
+        <h1 id="hero-title"><span class="name-line">Boris</span> <span class="name-line surname">Šarić</span></h1>
+        <p class="intro-description"><span class="intro-text">Dobro došli!
+Ovdje možete pronaći pregled mojih radova, projekata i znanja s kojima svakodnevno gradim nova rješenja.</span></p>
+      </div>
       <div class="hero-bottom"><span>NEPRESTANO U NASTAJANJU</span><a href="#o-meni">Nastavi istraživati <span aria-hidden="true">↓</span></a><span>V.01 / 2026</span></div>
     </section>
     <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>ZNATIŽELJA <i>✳</i> KOD <i>✳</i> DIZAJN <i>✳</i> EKSPERIMENTI <i>✳</i> DOBRE IDEJE <i>✳</i> </span><span>ZNATIŽELJA <i>✳</i> KOD <i>✳</i> DIZAJN <i>✳</i> EKSPERIMENTI <i>✳</i> DOBRE IDEJE <i>✳</i> </span></div></div>

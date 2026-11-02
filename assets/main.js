@@ -1,5 +1,73 @@
 (() => {
   'use strict';
+  // Only the intro animates, once per page load. The complete welcome remains
+  // available to assistive technology and without JavaScript.
+  const intro = document.querySelector('#naslovna');
+  const introText = intro.querySelector('.intro-text');
+  const welcome = introText.textContent;
+  const nameLines = [...intro.querySelectorAll('.name-line')];
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let introTimer;
+  let introFinished = false;
+  const nameAnimations = [];
+
+  function finishIntro() {
+    introFinished = true;
+    clearTimeout(introTimer);
+    nameAnimations.forEach(animation => animation.cancel());
+    nameLines.forEach(line => { line.style.opacity = ''; });
+    introText.textContent = welcome;
+    intro.classList.remove('intro-typing');
+    intro.classList.add('intro-complete');
+  }
+
+  async function playIntro() {
+    if (motionPreference.matches || typeof nameLines[0].animate !== 'function') {
+      finishIntro();
+      return;
+    }
+    const layout = introText.cloneNode(true);
+    layout.className = 'intro-layout';
+    layout.setAttribute('aria-hidden', 'true');
+    const accessibleText = introText.cloneNode(true);
+    accessibleText.className = 'sr-only';
+    introText.setAttribute('aria-hidden', 'true');
+    introText.after(layout, accessibleText);
+    introText.textContent = '';
+    nameLines.forEach(line => { line.style.opacity = '0'; });
+    // Avoid waiting indefinitely on a font CDN before showing the introduction.
+    await Promise.race([
+      document.fonts.ready,
+      new Promise(resolve => setTimeout(resolve, 1200))
+    ]);
+    if (introFinished) return;
+    nameLines.forEach((line, index) => {
+      nameAnimations.push(line.animate([
+        { opacity:0, transform:'translateY(24px)' },
+        { opacity:1, transform:'translateY(0)' }
+      ], { duration:700, delay:index * 130, easing:'cubic-bezier(.2,.7,.2,1)', fill:'both' }));
+    });
+    await Promise.all(nameAnimations.map(animation => animation.finished.catch(() => {})));
+    if (introFinished) return;
+    nameLines.forEach(line => { line.style.opacity = ''; });
+    nameAnimations.forEach(animation => animation.cancel());
+    intro.classList.add('intro-typing');
+    const characters = Array.from(welcome);
+    let position = 0;
+    function typeNext() {
+      if (introFinished) return;
+      introText.textContent = characters.slice(0, ++position).join('');
+      if (position >= characters.length) { finishIntro(); return; }
+      const character = characters[position - 1];
+      const delay = character === '\n' ? 220 : /[.!?]/.test(character) ? 130 : 18;
+      introTimer = setTimeout(typeNext, delay);
+    }
+    typeNext();
+  }
+  motionPreference.addEventListener('change', event => { if (event.matches) finishIntro(); });
+  window.addEventListener('pagehide', finishIntro);
+  playIntro().catch(finishIntro);
+
   const header = document.querySelector('.header');
   const menuToggle = document.querySelector('.menu-toggle');
   const navigationLinks = [...header.querySelectorAll('nav a')];

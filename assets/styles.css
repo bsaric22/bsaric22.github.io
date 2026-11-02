@@ -1173,6 +1173,156 @@ main {
   color:var(--accent);
 }
 
+/* Intro: reserved portrait on the left, name and welcome on the right. */
+#naslovna {
+  grid-template-columns:minmax(0, .92fr) minmax(0, 1.08fr);
+  column-gap:clamp(40px, 6vw, 100px);
+  align-items:center;
+  padding-top:48px;
+}
+
+.hero-portrait {
+  position:relative;
+  grid-column:1;
+  grid-row:1;
+  width:100%;
+  max-width:470px;
+  aspect-ratio:4 / 5;
+  justify-self:center;
+  border:1px solid rgba(163, 205, 238, .2);
+  border-radius:24px;
+  background:linear-gradient(155deg, rgba(255, 255, 255, .035), rgba(2, 12, 56, .14));
+  overflow:hidden;
+}
+
+.portrait-placeholder {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  width:100%;
+  height:100%;
+  color:#a4bed3;
+  font-family:'Fira Code', monospace;
+  font-size:11px;
+}
+
+.portrait-placeholder svg {
+  width:60px;
+  height:60px;
+  stroke:currentColor;
+  stroke-width:1;
+  opacity:.65;
+}
+
+.portrait-image {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.portrait-corner {
+  position:absolute;
+  bottom:22px;
+  left:24px;
+  font-family:'Fira Code', monospace;
+  font-size:10px;
+  letter-spacing:2px;
+  color:#a4bed3;
+}
+
+#naslovna .hero-copy {
+  grid-column:2;
+  grid-row:1;
+  min-width:0;
+  padding-block:24px;
+}
+
+#hero-title {
+  font-family:'Clash Display', var(--sans);
+  font-size:clamp(84px, 9.8vw, 146px);
+  font-weight:500;
+  line-height:.97;
+  letter-spacing:-.045em;
+  margin:0 0 34px;
+}
+
+.name-line {
+  display:block;
+}
+
+.intro-description {
+  display:grid;
+  position:relative;
+  margin:0;
+  max-width:560px;
+  font-family:'Fira Code', 'Courier New', monospace;
+  font-size:clamp(13px, 1.2vw, 16px);
+  font-weight:400;
+  font-variant-ligatures:none;
+  line-height:1.9;
+  color:var(--muted);
+  white-space:pre-line;
+  overflow-wrap:break-word;
+}
+
+.intro-text, .intro-layout {
+  grid-area:1 / 1;
+}
+
+.intro-layout {
+  visibility:hidden;
+}
+
+.intro-typing .intro-text::after {
+  content:'▍';
+  color:var(--accent);
+  font-size:.9em;
+}
+
+#naslovna .hero-bottom {
+  margin-top:36px;
+}
+
+@media(max-width:900px) and (min-width:761px) {
+  #naslovna {
+    column-gap:36px;
+  }
+  #hero-title {
+    font-size:90px;
+  }
+}
+
+@media(max-width:760px) {
+  #naslovna {
+    grid-template-columns:minmax(0, 1fr);
+    gap:32px;
+    padding-top:28px;
+  }
+  #naslovna .hero-copy {
+    grid-column:1;
+    grid-row:1;
+    padding-block:0;
+  }
+  #hero-title {
+    font-size:clamp(76px, 18vw, 112px);
+    margin-bottom:28px;
+  }
+  .intro-description {
+    font-size:14px;
+    max-width:100%;
+  }
+  .hero-portrait {
+    grid-row:2;
+    max-width:420px;
+  }
+  #naslovna .hero-bottom {
+    margin-top:0;
+  }
+}
+
 .nav-brand {
   white-space:nowrap;
 }
