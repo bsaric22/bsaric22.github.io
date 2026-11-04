@@ -1,0 +1,44 @@
+.project-page { background:#1e1e1e; min-height:100vh; isolation:isolate; }
+.project-page::before { content:''; position:fixed; inset:0; z-index:-1; pointer-events:none; background-image:linear-gradient(rgba(156,178,195,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(156,178,195,.045) 1px, transparent 1px), radial-gradient(circle, rgba(173,185,196,.13) 1px, transparent 1.2px); background-size:96px 96px,96px 96px,24px 24px; }
+.project-drafting { position:fixed; inset:0; overflow:hidden; z-index:-1; pointer-events:none; }
+.project-drafting svg { position:absolute; width:min(70vw, 900px); right:-15%; top:13%; opacity:.1; stroke:#b7cad7; stroke-width:1; transform:rotate(12deg); }
+.project-main { padding-top:146px; padding-bottom:90px; }
+.back-to-projects { display:inline-flex; align-items:center; gap:14px; padding:12px 18px; border:1px solid #4a535c; border-radius:7px; background:#20252a; color:#d6dfe6; font:400 12px 'Fira Code', monospace; margin-bottom:52px; }
+.back-to-projects:hover { border-color:var(--accent); color:#fff; }
+.project-detail-layout { display:grid; grid-template-columns:minmax(0, 1.1fr) minmax(0, .9fr); gap:clamp(36px, 5vw, 76px); align-items:start; }
+.project-gallery, .project-details { min-width:0; }
+.gallery-main { display:block; position:relative; width:100%; padding:0; overflow:hidden; border:1px solid #64727d; border-radius:6px; background:#252a30; aspect-ratio:4 / 3; }
+.gallery-main img { display:block; width:100%; height:100%; object-fit:contain; }
+.gallery-next-hint { position:absolute; right:16px; bottom:16px; border:1px solid #5c6a75; background:rgba(23,27,31,.9); color:#d9e1e7; border-radius:4px; padding:8px 11px; font:400 10px 'Fira Code', monospace; }
+.gallery-controls { display:flex; align-items:center; justify-content:space-between; gap:16px; margin:16px 0; }
+.gallery-controls button { width:42px; height:38px; border:1px solid #46515c; border-radius:5px; color:#d9e1e7; background:#24282d; font-size:20px; }
+.gallery-controls button:hover { border-color:var(--accent); }
+.gallery-status { margin:0; color:#aab8c2; font:400 11px 'Fira Code', monospace; }
+.gallery-thumbnails { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:12px; }
+.gallery-thumbnail { display:block; width:100%; min-width:0; padding:4px; border:1px solid #4d5964; border-radius:5px; background:#24282d; aspect-ratio:4 / 3; }
+.gallery-thumbnail img { display:block; width:100%; height:100%; object-fit:contain; border-radius:2px; opacity:.6; }
+.gallery-thumbnail[aria-pressed="true"] { border-color:var(--accent); box-shadow:0 0 0 1px var(--accent); }
+.gallery-thumbnail[aria-pressed="true"] img, .gallery-thumbnail:hover img { opacity:1; }
+.project-category-label { margin:0 0 17px; color:#9cadbb; font:400 11px 'Fira Code', monospace; letter-spacing:.1em; }
+.project-details h1 { font:500 clamp(44px, 4.8vw, 72px)/1.06 'Clash Display', var(--sans); letter-spacing:-.035em; margin:0 0 38px; }
+.project-details h2 { margin:0 0 22px; font:600 17px/1.5 'Fira Code', monospace; letter-spacing:0; color:#f0f3f6; }
+.project-facts { padding-bottom:30px; border-bottom:1px solid #414950; margin-bottom:30px; }
+.project-facts dl { margin:0; font:400 14px/1.8 'Fira Code', monospace; }
+.project-facts dl > div { display:grid; grid-template-columns:minmax(0, 135px) minmax(0, 1fr); gap:18px; margin-top:13px; }
+.project-facts dt { font-weight:600; color:#dce3e8; }
+.project-facts dd { margin:0; color:#aebdc8; overflow-wrap:anywhere; }
+.project-description p { font:400 14px/1.95 'Fira Code', monospace; color:#bdc8d0; margin:0 0 18px; }
+.project-footer { display:flex; justify-content:space-between; gap:24px; padding-block:28px; border-top:1px solid #414950; font:500 12px 'Outfit', sans-serif; color:#b9c7d2; }
+@media(max-width:900px) {
+  .project-detail-layout { grid-template-columns:minmax(0, 1fr); gap:46px; }
+  .project-gallery { width:100%; max-width:680px; margin-inline:auto; }
+}
+@media(max-width:760px) {
+  .project-main { padding-top:116px; padding-bottom:54px; }
+  .back-to-projects { margin-bottom:30px; }
+  .project-facts dl > div { grid-template-columns:minmax(0, 120px) minmax(0, 1fr); gap:12px; }
+  .project-facts dl, .project-description p { font-size:13px; }
+  .gallery-thumbnails { gap:8px; }
+  .gallery-next-hint { bottom:10px; right:10px; font-size:9px; }
+  .project-footer { flex-wrap:wrap; }
+}

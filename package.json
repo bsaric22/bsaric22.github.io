@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node scripts/serve.mjs",
-    "check": "node --check assets/main.js && node --check scripts/serve.mjs"
+    "check": "node --check assets/main.js && node --check assets/project.js && node --check scripts/serve.mjs"
   },
   "engines": { "node": ">=20" }
 }

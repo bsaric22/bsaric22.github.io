@@ -14,11 +14,12 @@
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&family=Outfit:wght@500&family=Yeseva+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&family=Outfit:wght@500;600&family=Yeseva+One&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/styles.css?v=20261102-2">
   <link rel="stylesheet" href="./assets/hero.css?v=20261102-2">
+  <link rel="stylesheet" href="./assets/portfolio.css?v=20261104-2">
   <script src="./assets/main.js?v=20261102-2" defer></script>
 </head>
 <body>
@@ -155,11 +156,92 @@ Ovdje možete pronaći pregled mojih radova, projekata i znanja s kojima svakodn
       </div>
     </section>
     </div>
-    <section class="experiments wrap section" id="portfolio" aria-labelledby="experiments-title"><div class="section-heading"><div><p class="section-label"><span class="section-number">02 /</span> PORTFOLIO — DIGITALNI EKSPERIMENTI</p><h2 id="experiments-title">A što ako <span class="serif">probamo?</span></h2></div><p>Tri ideje. Bez pravila.<br>Odaberi oblik i poigraj se.</p></div><div class="experiment-grid">
-      <a class="experiment" href="#igraliste" data-preset="orbit"><div class="experiment-art art-orbit"><div class="mini-orbit" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="experiment-index">001</span><span class="experiment-arrow" aria-hidden="true">↗</span></div><div class="experiment-info"><h3>Privlačna sila</h3><span>GEOMETRIJA / POKRET</span></div><p>Jedan oblik. Bezbroj perspektiva.</p></a>
-      <a class="experiment" href="#igraliste" data-preset="wave"><div class="experiment-art art-wave"><div class="wave-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="experiment-index">002</span><span class="experiment-arrow" aria-hidden="true">↗</span></div><div class="experiment-info"><h3>U svom ritmu</h3><span>VALOVI / HARMONIJA</span></div><p>Malo reda u nepredvidivom.</p></a>
-      <a class="experiment" href="#igraliste" data-preset="grid"><div class="experiment-art art-grid"><div class="dot-grid" aria-hidden="true"></div><span class="experiment-index">003</span><span class="experiment-arrow" aria-hidden="true">↗</span></div><div class="experiment-info"><h3>Sve je povezano</h3><span>TOČKE / INTERAKCIJA</span></div><p>Istraži geometriju točaka.</p></a>
-    </div></section>
+    <section class="portfolio-surface" id="portfolio" aria-labelledby="portfolio-title">
+      <div class="portfolio-blueprint" aria-hidden="true">
+        <svg class="blueprint-layout" viewBox="0 0 500 460" fill="none"><rect x="60" y="75" width="330" height="285" rx="5"/><path d="M60 125h330M170 125v235M190 150h175v90H190zM190 265h120m-120 20h150m-150 20h100M85 150h60m-60 25h45M40 75H15m25 285H15M25 75v285M60 50V25m330 25V25M60 35h330"/><path d="m20 80 10-10m-10 295 10-10M55 40l10-10m320 10 10-10"/><circle cx="335" cy="313" r="62"/><path d="m290 360 90-94" stroke-dasharray="4 8"/></svg>
+        <svg class="blueprint-flow" viewBox="0 0 480 620" fill="none"><rect x="35" y="35" width="150" height="90" rx="10"/><rect x="280" y="205" width="150" height="90" rx="10"/><rect x="40" y="405" width="150" height="90" rx="10"/><path d="M110 125v125h170m-14-8 14 8-14 8M355 295v155H190m14-8-14 8 14 8M60 60h100m-100 18h70M305 230h100m-100 18h70M65 430h100m-100 18h70"/><circle cx="242" cy="555" r="44"/><path d="M185 80h170v125M115 495v60h83M20 555h400M242 500v110" stroke-dasharray="5 9"/></svg>
+      </div>
+      <div class="wrap portfolio-content">
+        <h2 id="portfolio-title">Moj portfolio<span class="surname">.</span></h2>
+        <section class="portfolio-category" aria-labelledby="graphic-design-title">
+          <div class="portfolio-category-heading"><h3 id="graphic-design-title">Grafički dizajn</h3><span class="category-rule" aria-hidden="true"></span></div>
+          <div class="portfolio-grid">
+            <article class="project-card">
+              <a class="project-image" href="./projekt-vizualni-identitet.html" target="_blank" rel="noopener noreferrer" aria-label="Vizualni identitet — detalji projekta (nova kartica)">
+                <span class="project-number" aria-hidden="true">01</span>
+                <span class="project-open" aria-hidden="true">↗</span>
+                <!-- Zamijeni .project-placeholder slikom: <img src="./assets/projekti/naziv.jpg" alt="Opis projekta"> -->
+                <div class="project-placeholder">
+                  <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="8" y="12" width="48" height="40" rx="3"/><circle cx="23" cy="25" r="5"/><path d="m9 45 14-12 10 8 10-15 12 19M2 12h4m52 0h4M8 6v4m48-4v4M8 54v4m48-4v4"/></svg>
+                  <span>Prostor za sliku</span>
+                </div>
+              </a>
+              <h4 class="project-title">Vizualni identitet</h4>
+            </article>
+            <article class="project-card">
+              <div class="project-image">
+                <span class="project-number" aria-hidden="true">02</span>
+                <!-- Zamijeni .project-placeholder slikom: <img src="./assets/projekti/naziv.jpg" alt="Opis projekta"> -->
+                <div class="project-placeholder">
+                  <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="8" y="12" width="48" height="40" rx="3"/><circle cx="23" cy="25" r="5"/><path d="m9 45 14-12 10 8 10-15 12 19M2 12h4m52 0h4M8 6v4m48-4v4M8 54v4m48-4v4"/></svg>
+                  <span>Prostor za sliku</span>
+                </div>
+              </div>
+              <h4 class="project-title">Dizajn plakata</h4>
+            </article>
+            <article class="project-card">
+              <div class="project-image">
+                <span class="project-number" aria-hidden="true">03</span>
+                <!-- Zamijeni .project-placeholder slikom: <img src="./assets/projekti/naziv.jpg" alt="Opis projekta"> -->
+                <div class="project-placeholder">
+                  <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="8" y="12" width="48" height="40" rx="3"/><circle cx="23" cy="25" r="5"/><path d="m9 45 14-12 10 8 10-15 12 19M2 12h4m52 0h4M8 6v4m48-4v4M8 54v4m48-4v4"/></svg>
+                  <span>Prostor za sliku</span>
+                </div>
+              </div>
+              <h4 class="project-title">Dizajn ambalaže</h4>
+            </article>
+          </div>
+        </section>
+        <section class="portfolio-category" aria-labelledby="ui-ux-title">
+          <div class="portfolio-category-heading"><h3 id="ui-ux-title">UI/UX</h3><span class="category-rule" aria-hidden="true"></span></div>
+          <div class="portfolio-grid">
+            <article class="project-card">
+              <div class="project-image">
+                <span class="project-number" aria-hidden="true">04</span>
+                <!-- Zamijeni .project-placeholder slikom: <img src="./assets/projekti/naziv.jpg" alt="Opis projekta"> -->
+                <div class="project-placeholder">
+                  <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="8" y="12" width="48" height="40" rx="3"/><circle cx="23" cy="25" r="5"/><path d="m9 45 14-12 10 8 10-15 12 19M2 12h4m52 0h4M8 6v4m48-4v4M8 54v4m48-4v4"/></svg>
+                  <span>Prostor za sliku</span>
+                </div>
+              </div>
+              <h4 class="project-title">Dizajn web stranice</h4>
+            </article>
+            <article class="project-card">
+              <div class="project-image">
+                <span class="project-number" aria-hidden="true">05</span>
+                <!-- Zamijeni .project-placeholder slikom: <img src="./assets/projekti/naziv.jpg" alt="Opis projekta"> -->
+                <div class="project-placeholder">
+                  <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="8" y="12" width="48" height="40" rx="3"/><circle cx="23" cy="25" r="5"/><path d="m9 45 14-12 10 8 10-15 12 19M2 12h4m52 0h4M8 6v4m48-4v4M8 54v4m48-4v4"/></svg>
+                  <span>Prostor za sliku</span>
+                </div>
+              </div>
+              <h4 class="project-title">Mobilna aplikacija</h4>
+            </article>
+            <article class="project-card">
+              <div class="project-image">
+                <span class="project-number" aria-hidden="true">06</span>
+                <!-- Zamijeni .project-placeholder slikom: <img src="./assets/projekti/naziv.jpg" alt="Opis projekta"> -->
+                <div class="project-placeholder">
+                  <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="8" y="12" width="48" height="40" rx="3"/><circle cx="23" cy="25" r="5"/><path d="m9 45 14-12 10 8 10-15 12 19M2 12h4m52 0h4M8 6v4m48-4v4M8 54v4m48-4v4"/></svg>
+                  <span>Prostor za sliku</span>
+                </div>
+              </div>
+              <h4 class="project-title">Korisničko sučelje</h4>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
     <section class="playground" id="igraliste" aria-labelledby="play-title"><div class="wrap playground-inner"><div class="play-copy"><p class="section-label"><span class="live-dot"></span> INTERAKTIVNA ZONA</p><h2 id="play-title">Sad si<br><span class="serif">ti na redu.</span></h2><p>Najbolje ideje počinju igrom.<br>Promijeni oblik, uhvati ritam<br>i vidi kamo te odvede.</p><fieldset class="mode-controls"><legend>Odaberi oblik</legend><button type="button" data-mode="orbit" aria-pressed="true">Orbita</button><button type="button" data-mode="wave" aria-pressed="false">Valovi</button><button type="button" data-mode="grid" aria-pressed="false">Mreža</button></fieldset><label class="intensity-label" for="intensity">Intenzitet <output id="intensity-value" for="intensity">50%</output></label><input id="intensity" type="range" min="0" max="100" value="50"><p class="play-hint">Odaberi oblik i prilagodi njegov intenzitet.</p><noscript><p>Uključi JavaScript za interaktivne eksperimente.</p></noscript></div><div class="play-stage"><canvas id="play-canvas" aria-label="Interaktivni geometrijski prikaz. Oblik i intenzitet mijenjaju se kontrolama."></canvas><div class="stage-footer"><span id="mode-label" aria-live="polite">001 — ORBITA</span><span>IZRAĐENO OD IDEJA & MATEMATIKE</span></div></div></div></section>
     <section class="contact wrap section" id="kontakt" aria-labelledby="contact-title"><p class="section-label"><span class="section-number">03 /</span> NASTAVIMO PRIČU</p><div class="contact-row"><h2 id="contact-title">Dobre stvari kreću<br>od jednog <span class="serif">„bok”.</span></h2><a class="contact-link" href="https://github.com/bsaric22" target="_blank" rel="noopener noreferrer" aria-label="Posjeti bsaric22 na GitHubu (nova kartica)"><span aria-hidden="true">↗</span></a></div><div class="contact-bottom"><p>Imaš ideju ili te zanima što radim?<br>Pronađi me na GitHubu.</p><a class="text-link" href="https://github.com/bsaric22" target="_blank" rel="noopener noreferrer">github.com/bsaric22 <span aria-hidden="true">↗</span><span class="sr-only"> (nova kartica)</span></a></div></section>
   </main>

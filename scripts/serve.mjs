@@ -10,7 +10,7 @@ http.createServer(async (req, res) => {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
     const file = resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname));
     const relative = file.slice(root.length + 1).split(sep).join('/');
-    if (!file.startsWith(root + sep) || !(relative === 'index.html' || relative.startsWith('assets/')) || relative.split('/').some(part => part.startsWith('.'))) {
+    if (!file.startsWith(root + sep) || !(['index.html', 'projekt-vizualni-identitet.html'].includes(relative) || relative.startsWith('assets/')) || relative.split('/').some(part => part.startsWith('.'))) {
       res.writeHead(404).end('Not found');
       return;
     }
