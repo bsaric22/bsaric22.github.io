@@ -277,7 +277,7 @@
 .skills-ready .skills-viewport { overflow:hidden; }
 .skills-track { display:flex; width:max-content; }
 .skills-list { display:flex; flex-shrink:0; align-items:center; gap:64px; list-style:none; margin:0; padding:0 64px 0 0; }
-.skills-ready .skills-track { animation:skills-drift 140s linear infinite; }
+.skills-ready .skills-track { animation:skills-drift 50s linear infinite; }
 .skills-paused .skills-track { animation-play-state:paused; }
 .skill-item { display:flex; align-items:center; gap:16px; white-space:nowrap; color:#d6dce1; }
 .skill-logo { display:flex; align-items:center; justify-content:center; flex:0 0 52px; width:52px; height:52px; gap:6px; }

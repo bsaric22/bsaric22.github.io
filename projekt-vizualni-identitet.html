@@ -14,8 +14,8 @@
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/styles.css?v=20261102-2">
-  <link rel="stylesheet" href="./assets/project.css?v=20261104-1">
-  <script src="./assets/project.js?v=20261104-1" defer></script>
+  <link rel="stylesheet" href="./assets/project.css?v=20261104-3">
+  <script src="./assets/project.js?v=20261104-3" defer></script>
 </head>
 <body class="project-page">
   <a class="skip-link" href="#main">Preskoči na sadržaj</a>
@@ -37,9 +37,9 @@
     <a class="back-to-projects" href="./index.html#portfolio"><span aria-hidden="true">←</span> Natrag na projekte</a>
     <div class="project-detail-layout">
       <section class="project-gallery" aria-label="Galerija projekta">
-        <button class="gallery-main" type="button" aria-label="Prikaži sljedeću sliku projekta" aria-controls="project-main-image">
+        <button class="gallery-main" type="button" aria-label="Povećaj odabranu sliku projekta" aria-haspopup="dialog" aria-controls="image-preview">
           <img id="project-main-image" src="./assets/projects/identity-01.svg" alt="Prostor za glavnu sliku projekta — prikaz 1" width="1200" height="900">
-          <span class="gallery-next-hint" aria-hidden="true">Sljedeća slika ↗</span>
+          <span class="gallery-next-hint" aria-hidden="true">Povećaj sliku ↗</span>
         </button>
         <div class="gallery-controls">
           <button class="gallery-previous" type="button" aria-label="Prethodna slika">←</button>
@@ -72,6 +72,16 @@
       </article>
     </div>
   </main>
+  <dialog id="image-preview" class="image-preview" aria-labelledby="image-preview-title">
+    <h2 id="image-preview-title" class="sr-only">Povećani prikaz slike projekta</h2>
+    <button class="image-preview-close" type="button" aria-label="Zatvori povećani prikaz" autofocus><span aria-hidden="true">×</span></button>
+    <p class="image-preview-status" aria-live="polite" aria-atomic="true">Slika 1 od 3</p>
+    <div class="image-preview-stage">
+      <img id="preview-image" class="image-preview-image" src="./assets/projects/identity-01.svg" alt="Prostor za glavnu sliku projekta — prikaz 1">
+      <button class="image-preview-arrow image-preview-previous" type="button" aria-label="Prethodna slika u povećanom prikazu" aria-controls="preview-image"><span aria-hidden="true">←</span></button>
+      <button class="image-preview-arrow image-preview-next" type="button" aria-label="Sljedeća slika u povećanom prikazu" aria-controls="preview-image"><span aria-hidden="true">→</span></button>
+    </div>
+  </dialog>
   <footer class="project-footer wrap"><span>BORIS <span class="surname">ŠARIĆ</span></span><a href="./index.html#portfolio">Povratak na portfolio ↑</a></footer>
 </body>
 </html>

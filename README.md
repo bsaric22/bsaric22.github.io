@@ -24,6 +24,8 @@ Workflow priprema mapu samo s javnim datotekama. `.nojekyll` isključuje Jekyll.
 
 Portfolio ima dvije kategorije, Grafički dizajn i UI/UX, s po tri kartice. U `index.html` zamijeni sadržaj `.project-placeholder` vlastitim `<img>` elementom (primjer je uz svaku karticu), a naslov promijeni u `.project-title`. Predloženi naslovi služe kao početni primjeri. Slike imaju okvir omjera 4:3; preporučena širina je barem 1200 px. Izgled kartica i blueprint podloga nalaze se u `assets/portfolio.css`.
 
+Prva portfolio slika otvara `projekt-vizualni-identitet.html` u novoj kartici. Na toj stranici uređuju se naslov, klijent, datum, lokacija i opis projekta. Galerija koristi tri početna SVG prikaza iz `assets/projects/`: zamijeni `src` i `alt` na malim pregledima te početnoj glavnoj slici. Klik na glavnu sliku otvara centrirani povećani prikaz širine 60% ekrana (na mobitelu gotovo pune širine). Zatvara se gumbom ×, tipkom Escape ili klikom izvan slike. Strelice i mali pregledi mijenjaju sliku; nakon kraja vraća se na početak. Podržane su i strelice na tipkovnici dok je fokus u galeriji. Stil je u `assets/project.css`, a ponašanje u `assets/project.js`. Nova HTML stranica uključena je u lokalni server i GitHub Pages workflow.
+
 - `index.html`: ime, uvod, tekst o meni, poveznice i metapodaci. Tekst je početni prijedlog; eksperimenti su interaktivni demo primjeri, a ne tvrdnje o ranijim projektima.
 - `assets/styles.css`: boje, tipografija, raspored i animacije.
 - `assets/main.js`: statični geometrijski prikazi, intenzitet oblika i navigacija.

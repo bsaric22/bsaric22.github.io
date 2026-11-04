@@ -13,18 +13,45 @@
     image.alt = preview.alt;
     thumbnails.forEach((thumbnail, i) => thumbnail.setAttribute('aria-pressed', String(i === current)));
     status.textContent = 'Slika ' + (current + 1) + ' od ' + thumbnails.length;
+    if (previewDialog.open) syncPreview();
   }
   thumbnails.forEach((thumbnail, index) => thumbnail.addEventListener('click', () => showImage(index)));
-  gallery.querySelector('.gallery-main').addEventListener('click', () => showImage(current + 1));
+  const mainButton = gallery.querySelector('.gallery-main');
+  const previewDialog = document.querySelector('#image-preview');
+  const previewImage = previewDialog.querySelector('.image-preview-image');
+  const previewStatus = previewDialog.querySelector('.image-preview-status');
+  function syncPreview() {
+    previewImage.src = image.src;
+    previewImage.alt = image.alt;
+    previewStatus.textContent = 'Slika ' + (current + 1) + ' od ' + thumbnails.length;
+  }
+  mainButton.addEventListener('click', () => {
+    syncPreview();
+    previewDialog.showModal();
+    document.documentElement.classList.add('image-preview-open');
+  });
+  previewDialog.querySelector('.image-preview-close').addEventListener('click', () => previewDialog.close());
+  previewDialog.querySelector('.image-preview-previous').addEventListener('click', () => showImage(current - 1));
+  previewDialog.querySelector('.image-preview-next').addEventListener('click', () => showImage(current + 1));
+  previewDialog.addEventListener('click', event => {
+    if (event.target === previewDialog) previewDialog.close();
+  });
+  // Native dialog handles Escape and keeps keyboard focus inside the preview.
+  previewDialog.addEventListener('close', () => {
+    document.documentElement.classList.remove('image-preview-open');
+    mainButton.focus({ preventScroll:true });
+  });
   gallery.querySelector('.gallery-next').addEventListener('click', () => showImage(current + 1));
   gallery.querySelector('.gallery-previous').addEventListener('click', () => showImage(current - 1));
-  gallery.addEventListener('keydown', event => {
+  function handleGalleryKeys(event) {
     if (event.altKey || event.ctrlKey || event.metaKey) return;
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
       event.preventDefault();
       showImage(current + (event.key === 'ArrowRight' ? 1 : -1));
     }
-  });
+  }
+  gallery.addEventListener('keydown', handleGalleryKeys);
+  previewDialog.addEventListener('keydown', handleGalleryKeys);
 
   const header = document.querySelector('.header');
   const toggle = header.querySelector('.menu-toggle');
