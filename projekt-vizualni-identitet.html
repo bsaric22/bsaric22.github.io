@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/styles.css?v=20261102-2">
-  <link rel="stylesheet" href="./assets/project.css?v=20261104-3">
+  <link rel="stylesheet" href="./assets/project.css?v=20261106-1">
   <script src="./assets/project.js?v=20261104-3" defer></script>
 </head>
 <body class="project-page">
@@ -38,8 +38,8 @@
     <div class="project-detail-layout">
       <section class="project-gallery" aria-label="Galerija projekta">
         <button class="gallery-main" type="button" aria-label="Povećaj odabranu sliku projekta" aria-haspopup="dialog" aria-controls="image-preview">
-          <img id="project-main-image" src="./assets/projects/identity-01.svg" alt="Prostor za glavnu sliku projekta — prikaz 1" width="1200" height="900">
-          <span class="gallery-next-hint" aria-hidden="true">Povećaj sliku ↗</span>
+          <img id="project-main-image" src="./assets/projects/Sezonska.png" alt="Prostor za glavnu sliku projekta — prikaz 1" width="1200" height="900">
+          
         </button>
         <div class="gallery-controls">
           <button class="gallery-previous" type="button" aria-label="Prethodna slika">←</button>
@@ -48,36 +48,34 @@
         </div>
         <div class="gallery-thumbnails" role="group" aria-label="Odaberi sliku">
           <!-- Za svoje slike promijeni src i alt na ovim pregledima te početnu glavnu sliku iznad. -->
-          <button type="button" class="gallery-thumbnail" aria-label="Prikaži sliku 1" aria-pressed="true" aria-controls="project-main-image"><img src="./assets/projects/identity-01.svg" alt="Prostor za glavnu sliku projekta — prikaz 1" width="1200" height="900"></button>
-          <button type="button" class="gallery-thumbnail" aria-label="Prikaži sliku 2" aria-pressed="false" aria-controls="project-main-image"><img src="./assets/projects/identity-02.svg" alt="Prostor za dodatnu sliku projekta — prikaz 2" width="1200" height="900"></button>
-          <button type="button" class="gallery-thumbnail" aria-label="Prikaži sliku 3" aria-pressed="false" aria-controls="project-main-image"><img src="./assets/projects/identity-03.svg" alt="Prostor za dodatnu sliku projekta — prikaz 3" width="1200" height="900"></button>
+          <button type="button" class="gallery-thumbnail" aria-label="Prikaži sliku 1" aria-pressed="true" aria-controls="project-main-image"><img src="./assets/projects/Sezonska.png" alt="Prostor za glavnu sliku projekta — prikaz 1" width="auto"></button>
         </div>
       </section>
       <article class="project-details">
-        <p class="project-category-label">GRAFIČKI DIZAJN / 01</p>
-        <h1>Vizualni identitet<span class="surname">.</span></h1>
+        <p class="project-category-label">GRAFIČKI DIZAJN</p>
+        <h1>Sezonske ulaznice<span class="surname">.</span></h1>
         <section class="project-facts" aria-labelledby="project-facts-title">
           <h2 id="project-facts-title">Osnovni detalji</h2>
           <dl>
-            <div><dt>Klijent</dt><dd>Naziv klijenta</dd></div>
-            <div><dt>Datum izrade</dt><dd>Datum projekta</dd></div>
-            <div><dt>Lokacija</dt><dd>Grad, država</dd></div>
+            <div><dt>Klijent</dt><dd>Stolnoteniski klub "CM" Vitez</dd></div>
+            <div><dt>Datum izrade</dt><dd>24.8.2026.</dd></div>
+            <div><dt>Lokacija</dt><dd>Vitez, Bosna i Hercegovina</dd></div>
           </dl>
         </section>
         <section class="project-description" aria-labelledby="project-description-title">
           <h2 id="project-description-title">Opis projekta</h2>
-          <p>Ovdje dolazi opis projekta: ideja, cilj i vizualni smjer.</p>
-          <p>U nastavku možeš predstaviti proces rada, izazove i konačno rješenje te objasniti kako odabrane boje, tipografija i elementi oblikuju vizualni identitet.</p>
+          <p>Dizajn sezonskih ulaznica za sezonu 2026/2027</p>
+          <p>Kroz dugogodišnju suradnju sa Stolnoteniskim klubom "CM" Vitez glavni projekt je upravo izrada modernih i vizualno privlačnih sezonskih ulaznica. Kako se klub natječe u najvišem stolnoteniskom rangu Bosne i Hercegovine, tako su i sezonske iskaznice urađene moderno sa vizualno privlačnim dizajnom.</p>
         </section>
       </article>
     </div>
   </main>
   <dialog id="image-preview" class="image-preview" aria-labelledby="image-preview-title">
     <h2 id="image-preview-title" class="sr-only">Povećani prikaz slike projekta</h2>
-    <button class="image-preview-close" type="button" aria-label="Zatvori povećani prikaz" autofocus><span aria-hidden="true">×</span></button>
-    <p class="image-preview-status" aria-live="polite" aria-atomic="true">Slika 1 od 3</p>
     <div class="image-preview-stage">
       <img id="preview-image" class="image-preview-image" src="./assets/projects/identity-01.svg" alt="Prostor za glavnu sliku projekta — prikaz 1">
+      <button class="image-preview-close" type="button" aria-label="Zatvori povećani prikaz" autofocus><span aria-hidden="true">×</span></button>
+      <p class="image-preview-status" aria-live="polite" aria-atomic="true">Slika 1 od 3</p>
       <button class="image-preview-arrow image-preview-previous" type="button" aria-label="Prethodna slika u povećanom prikazu" aria-controls="preview-image"><span aria-hidden="true">←</span></button>
       <button class="image-preview-arrow image-preview-next" type="button" aria-label="Sljedeća slika u povećanom prikazu" aria-controls="preview-image"><span aria-hidden="true">→</span></button>
     </div>

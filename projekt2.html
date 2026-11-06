@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <title>Vizualni identitet — Boris Šarić</title>
+  <meta name="description" content="Vizualni identitet — galerija i detalji projekta iz portfolija Borisa Šarića.">
+  <link rel="canonical" href="https://bsaric22.github.io/projekt-vizualni-identitet.html">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/styles.css?v=20261102-2">
+  <link rel="stylesheet" href="./assets/project.css?v=20261106-1">
+  <script src="./assets/project.js?v=20261104-3" defer></script>
+</head>
+<body class="project-page">
+  <a class="skip-link" href="#main">Preskoči na sadržaj</a>
+  <header class="header">
+    <a class="nav-brand" href="./index.html#naslovna" aria-label="Boris Šarić, početna"><span>BORIS <span class="surname">ŠARIĆ</span></span></a>
+    <nav id="site-navigation" aria-label="Glavna navigacija">
+      <a href="./index.html#o-meni">O meni</a>
+      <a href="./index.html#portfolio" aria-current="location">Portfolio</a>
+      <a href="./index.html#kontakt">Kontakt</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Otvori izbornik" hidden><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="project-drafting" aria-hidden="true">
+    <svg viewBox="0 0 800 900" fill="none"><path d="M70 90h610v670H70zM70 210h610M255 210v550M290 255h350v220H290zM290 525h290m-290 35h210M40 90H15m25 670H15M25 90v670M70 60V35m610 25V35M70 45h610"/><circle cx="510" cy="675" r="110"/><path d="M380 675h260M510 545v260m-180 35L700 470" stroke-dasharray="5 10"/></svg>
+  </div>
+  <main id="main" class="project-main wrap">
+    <a class="back-to-projects" href="./index.html#portfolio"><span aria-hidden="true">←</span> Natrag na projekte</a>
+    <div class="project-detail-layout">
+      <section class="project-gallery" aria-label="Galerija projekta">
+        <button class="gallery-main" type="button" aria-label="Povećaj odabranu sliku projekta" aria-haspopup="dialog" aria-controls="image-preview">
+          <img id="project-main-image" src="./assets/projects/mockup plakat 1.png" alt="Prostor za glavnu sliku projekta — prikaz 1" width="1200" height="900">
+          
+        </button>
+        <div class="gallery-controls">
+          <button class="gallery-previous" type="button" aria-label="Prethodna slika">←</button>
+          <p class="gallery-status" aria-live="polite" aria-atomic="true">Slika 1 od 3</p>
+          <button class="gallery-next" type="button" aria-label="Sljedeća slika">→</button>
+        </div>
+        <div class="gallery-thumbnails" role="group" aria-label="Odaberi sliku">
+          <!-- Za svoje slike promijeni src i alt na ovim pregledima te početnu glavnu sliku iznad. -->
+          <button type="button" class="gallery-thumbnail" aria-label="Prikaži sliku 1" aria-pressed="true" aria-controls="project-main-image"><img src="./assets/projects/mockup plakat 1.png" alt="Prostor za glavnu sliku projekta — prikaz 1" width="auto"></button>
+        </div>
+      </section>
+      <article class="project-details">
+        <p class="project-category-label">GRAFIČKI DIZAJN</p>
+        <h1>Dizajn plakata<span class="surname">.</span></h1>
+        <section class="project-facts" aria-labelledby="project-facts-title">
+          <h2 id="project-facts-title">Osnovni detalji</h2>
+          <dl>
+            <div><dt>Klijent</dt><dd>Stolnoteniski klub "CM" Vitez</dd></div>
+            <div><dt>Datum izrade</dt><dd>4.9.2026.</dd></div>
+            <div><dt>Lokacija</dt><dd>Vitez, Bosna i Hercegovina</dd></div>
+          </dl>
+        </section>
+        <section class="project-description" aria-labelledby="project-description-title">
+          <h2 id="project-description-title">Opis projekta</h2>
+          <p>Izrada plakata za događaj</p>
+          <p>Ovaj projekat je obuhvaćao izradu sportskog plakata za događaj dana otvorenih vrata koji se održao u sklopu europskog tjedna sporta kojeg je provodio Olimpijski komitet Bosne i Hercegovine kao i Stolnoteniski savez Bosne i Hercegovine</p>
+        </section>
+      </article>
+    </div>
+  </main>
+  <dialog id="image-preview" class="image-preview" aria-labelledby="image-preview-title">
+    <h2 id="image-preview-title" class="sr-only">Povećani prikaz slike projekta</h2>
+    <div class="image-preview-stage">
+      <img id="preview-image" class="image-preview-image" src="./assets/projects/identity-01.svg" alt="Prostor za glavnu sliku projekta — prikaz 1">
+      <button class="image-preview-close" type="button" aria-label="Zatvori povećani prikaz" autofocus><span aria-hidden="true">×</span></button>
+      <p class="image-preview-status" aria-live="polite" aria-atomic="true">Slika 1 od 3</p>
+      <button class="image-preview-arrow image-preview-previous" type="button" aria-label="Prethodna slika u povećanom prikazu" aria-controls="preview-image"><span aria-hidden="true">←</span></button>
+      <button class="image-preview-arrow image-preview-next" type="button" aria-label="Sljedeća slika u povećanom prikazu" aria-controls="preview-image"><span aria-hidden="true">→</span></button>
+    </div>
+  </dialog>
+  <footer class="project-footer wrap"><span>BORIS <span class="surname">ŠARIĆ</span></span><a href="./index.html#portfolio">Povratak na portfolio ↑</a></footer>
+</body>
+</html>
