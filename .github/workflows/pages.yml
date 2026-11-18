@@ -27,12 +27,15 @@ jobs:
         run: |
           node --check assets/main.js
           node --check assets/project.js
+          node --check assets/clients.js
+          node --check assets/portfolio.js
+          node --check assets/contact.js
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Prepare public files
         run: |
           mkdir _site
-          cp index.html projekt-vizualni-identitet.html .nojekyll _site/
+          cp index.html projekt-vizualni-identitet.html projekt2.html projekt3.html .nojekyll _site/
           cp -r assets _site/assets
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -9,6 +9,12 @@
   function showImage(index) {
     current = (index + thumbnails.length) % thumbnails.length;
     const preview = thumbnails[current].querySelector('img');
+    // Reserve the next image's own ratio before it finishes loading.
+    for (const dimension of ['width', 'height']) {
+      const value = preview.getAttribute(dimension);
+      if (value) image.setAttribute(dimension, value);
+      else image.removeAttribute(dimension);
+    }
     image.src = preview.getAttribute('src');
     image.alt = preview.alt;
     thumbnails.forEach((thumbnail, i) => thumbnail.setAttribute('aria-pressed', String(i === current)));
@@ -52,6 +58,7 @@
   }
   gallery.addEventListener('keydown', handleGalleryKeys);
   previewDialog.addEventListener('keydown', handleGalleryKeys);
+  showImage(0);
 
   const header = document.querySelector('.header');
   const toggle = header.querySelector('.menu-toggle');

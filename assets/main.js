@@ -315,11 +315,15 @@
   }
   document.querySelectorAll('[data-mode]').forEach(button => button.addEventListener('click', () => selectMode(button.dataset.mode)));
   document.querySelectorAll('[data-preset]').forEach(link => link.addEventListener('click', () => selectMode(link.dataset.preset)));
-  document.querySelector('#intensity').addEventListener('input', event => {
-    intensity = Number(event.target.value) / 100;
-    document.querySelector('#intensity-value').value = `${event.target.value}%`;
-    canvases.forEach(draw);
-  });
+  const intensityControl = document.querySelector('#intensity');
+  if (intensityControl) {
+    intensityControl.addEventListener('input', event => {
+      intensity = Number(event.target.value) / 100;
+      const intensityValue = document.querySelector('#intensity-value');
+      if (intensityValue) intensityValue.value = `${event.target.value}%`;
+      canvases.forEach(draw);
+    });
+  }
   document.querySelector('#year').textContent = new Date().getFullYear();
 
 })();
