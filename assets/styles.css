@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/* Navigation uses Outfit Medium; the rest of the typography stays independent. */
+
 :root {
   --paper:#233C52;
   --ink:#ffffff;
@@ -980,7 +980,6 @@ input[type=range] {
   }
 }
 
-/* Floating navigation: shared geometry for desktop and mobile. */
 main {
   padding-top:128px;
 }
